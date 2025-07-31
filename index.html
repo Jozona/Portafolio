@@ -1,130 +1,1027 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Josué Espinoza - Artista 3D</title>
 
-<head>
-
-    <link rel="stylesheet" href="./src/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,500&display=swap"
-        rel="stylesheet">
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
     <div class="elfsight-app-dc4a6d0e-6a07-4558-a18c-3fb1a2b9648f"></div>
-    <script src="https://kit.fontawesome.com/696d650a89.js" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-</head>
+    <!-- Iconos -->
+    <script
+      src="https://kit.fontawesome.com/696d650a89.js"
+      crossorigin="anonymous"
+    ></script>
 
-<body>
+    <!-- Estilos -->
+    <style>
+      :root {
+        --primary-color: #0d0d0f;
+        --secondary-color: #d1b3c4;
+        --accent-color: #735d78;
+        --light-color: #f7f0f5;
+        --dark-color: #1a1a2e;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--light-color);
+        color: var(--dark-color);
+        line-height: 1.6;
+      }
+
+      /* Navegación */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px; /* Altura fija para la navbar */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 5%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
+
+      .logo {
+        color: var(--light-color);
+        font-weight: 700;
+        font-size: 1.5rem;
+        font-family: "Quicksand", sans-serif;
+      }
+
+      .logo span {
+        color: var(--secondary-color);
+      }
+
+      #navegacion {
+        display: flex;
+        list-style: none;
+      }
+
+      #navegacion li {
+        margin-left: 2rem;
+      }
+
+      #navegacion a {
+        color: var(--light-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        position: relative;
+      }
+
+      #navegacion a:hover {
+        color: var(--secondary-color);
+      }
+
+      #navegacion a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--secondary-color);
+        transition: width 0.3s;
+      }
+
+      #navegacion a:hover::after {
+        width: 100%;
+      }
+
+      .language-toggle {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .language-toggle a {
+        color: var(--light-color);
+        text-decoration: none;
+      }
+
+      .language-toggle a.active {
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
+
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--light-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 80px; /* Igual a la altura de la navbar */
+        height: calc(100vh - 80px); /* Ajusta la altura del hero */
+        background: linear-gradient(
+            rgba(42, 61, 102, 0.7),
+            rgba(42, 61, 102, 0.7)
+          ),
+          url("/src/imagenes/FinalRender1.png") no-repeat center center/cover;
+        color: var(--light-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 5%;
+      }
+
+      .hero-area {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .hero-text {
+        max-width: 600px;
+      }
+
+      .hero-text h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        margin-bottom: 2rem;
+      }
+
+      .subtitle p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: var(--secondary-color);
+      }
+
+      .button {
+        display: inline-block;
+      }
+
+      .button a {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid var(--secondary-color);
+      }
+
+      .button a:hover {
+        background-color: transparent;
+        color: var(--secondary-color);
+      }
+
+      .socials {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .social {
+        color: var(--light-color);
+        font-size: 1.5rem;
+        transition: color 0.3s;
+      }
+
+      .social:hover {
+        color: var(--secondary-color);
+      }
+
+      /* Sobre mí */
+      .sub-section {
+        padding: 6rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .information {
+        flex: 1;
+      }
+
+      .information h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: var(--primary-color);
+        position: relative;
+      }
+
+      .information h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 80px;
+        height: 4px;
+        background-color: var(--accent-color);
+      }
+
+      .information p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .skill {
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        padding: 0.5rem 1.2rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      .headshot-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .headshot {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Proyectos */
+      .sub-section-alternative {
+        padding: 6rem 5%;
+        background-color: var(--primary-color);
+        color: var(--light-color);
+      }
+
+      .sub-section-alternative h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .sub-section-alternative h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--secondary-color);
+      }
+
+      .contenedor-proyectos {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .tarjeta-proyecto {
+        background-color: var(--light-color);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .tarjeta-proyecto:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .tarjeta-proyecto img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 3px solid var(--accent-color);
+      }
+
+      .project-info {
+        padding: 1.5rem;
+      }
+
+      .project-info h3 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .project-info p {
+        color: var(--dark-color);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-links a {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        transition: background-color 0.3s;
+      }
+
+      .project-links a:hover {
+        background-color: var(--accent-color);
+      }
+
+      /* Contacto */
+      footer {
+        padding: 4rem 5%;
+        background-color: var(--dark-color);
+        color: var(--light-color);
+        text-align: center;
+      }
+
+      footer h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      footer h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--secondary-color);
+      }
+
+      footer p {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .contact-icons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .contact-icons a {
+        color: var(--light-color);
+        font-size: 1.5rem;
+        transition: color 0.3s;
+      }
+
+      .contact-icons a:hover {
+        color: var(--secondary-color);
+      }
+
+      .copyright {
+        margin-top: 3rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Add to your existing styles */
+      .spline-container {
+        width: 40%;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+      }
+
+      spline-viewer {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+      }
+
+      /* Update hero-area for better spacing */
+      .hero-area {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0 5%;
+      }
+
+      .hero-text {
+        width: 50%;
+        z-index: 2;
+      }
+
+      /* For mobile responsiveness */
+      @media (max-width: 768px) {
+        .hero-area {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .spline-container {
+          width: 100%;
+          height: 50vh;
+          order: 2;
+          margin-top: 2rem;
+        }
+
+        .hero-text {
+          width: 100%;
+          order: 1;
+        }
+
+        .socials {
+          order: 3;
+          margin-top: 2rem;
+        }
+      }
+
+      @keyframes spin {
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        #navegacion {
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background-color: var(--primary-color);
+          flex-direction: column;
+          align-items: center;
+          padding-top: 2rem;
+          transition: left 0.3s;
+        }
+
+        #navegacion.active {
+          left: 0;
+        }
+
+        #navegacion li {
+          margin: 1rem 0;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .hero-area {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+
+        .subtitle p {
+          font-size: 1.2rem;
+        }
+
+        .socials {
+          flex-direction: row;
+          margin-top: 2rem;
+          gap: 2rem;
+        }
+
+        .sub-section {
+          flex-direction: column;
+          padding: 4rem 5%;
+        }
+
+        .information {
+          order: 2;
+        }
+
+        .headshot-container {
+          order: 1;
+          margin-bottom: 2rem;
+        }
+
+        nav {
+          height: 60px; /* Altura menor para móviles */
+          padding: 1rem 5%;
+        }
+
+        .hero {
+          margin-top: 60px;
+          height: calc(100vh - 60px);
+        }
+
+        #navegacion {
+          top: 60px; /* Ajusta según la altura de la navbar móvil */
+          height: calc(100vh - 60px);
+        }
+      }
+
+      /* Spline Container - Versión mejorada */
+      .spline-container {
+        position: absolute;
+        right: 5%;
+        width: 40%;
+        height: 70vh;
+        max-height: 600px;
+        min-height: 400px;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      spline-viewer {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: transparent;
+        overflow: hidden;
+        transform: scale(1); /* Valor inicial */
+        transition: transform 0.3s ease;
+      }
+
+      /* Ajustes para tablet */
+      @media (max-width: 1024px) {
+        .spline-container {
+          width: 50%;
+          height: 60vh;
+          right: 2%;
+        }
+      }
+
+      /* Ajustes para móvil */
+      @media (max-width: 768px) {
+        .hero-area {
+          flex-direction: column;
+        }
+
+        .spline-container {
+          position: relative;
+          width: 100%;
+          height: 50vh;
+          right: auto;
+          margin: 2rem 0;
+          min-height: 300px;
+        }
+
+        spline-viewer {
+          transform: scale(0.9); /* Ligera reducción en móviles */
+        }
+      }
+
+      /* Ajustes para móviles pequeños */
+      @media (max-width: 480px) {
+        .spline-container {
+          height: 40vh;
+          min-height: 250px;
+        }
+
+        spline-viewer {
+          transform: scale(0.85);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
     <section class="hero">
-        <nav>
-            <div></div>
-            <ul id="navegacion">
-                <li><a id="liSobreMi" href="#sobre-mi">Sobre mi</a></li>
-                <li><a id="liProyectos" href="#proyectos">Proyectos</a></li>
-                <li><a id="liContacto" href="#contacto">Contacto</a></li>
-                <li><svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="28" height="28" viewBox="0 -4 28 28">
-                        <path
-                            d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm10 12c0 .685-.07 1.354-.202 2h-3.853c.121-1.283.129-2.621 0-4h3.853c.132.646.202 1.315.202 2zm-.841-4h-3.5c-.383-1.96-1.052-3.751-1.948-5.278 2.435.977 4.397 2.882 5.448 5.278zm-5.554 0h-2.605v-5.658c1.215 1.46 2.117 3.41 2.605 5.658zm-4.605-5.658v5.658h-2.605c.488-2.248 1.39-4.198 2.605-5.658zm0 7.658v4h-2.93c-.146-1.421-.146-2.577 0-4h2.93zm0 6v5.658c-1.215-1.46-2.117-3.41-2.605-5.658h2.605zm2 5.658v-5.658h2.605c-.488 2.248-1.39 4.198-2.605 5.658zm0-7.658v-4h2.93c.146 1.421.146 2.577 0 4h-2.93zm-4.711-11.278c-.896 1.527-1.565 3.318-1.948 5.278h-3.5c1.051-2.396 3.013-4.301 5.448-5.278zm-6.087 7.278h3.853c-.121 1.283-.129 2.621 0 4h-3.853c-.132-.646-.202-1.315-.202-2s.07-1.354.202-2zm.639 6h3.5c.383 1.96 1.052 3.751 1.948 5.278-2.435-.977-4.397-2.882-5.448-5.278zm12.87 5.278c.896-1.527 1.565-3.318 1.948-5.278h3.5c-1.051 2.396-3.013 4.301-5.448 5.278z" />
-                    </svg><a href="#en" onclick="reloadPage()" data-reload>English</a>/<a href=".">Español</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-        <div class="hero-area">
-            <div class="hero-text animacion">
-                <h1>Josué Espinoza </h1>
-                <div class="subtitle">
-                    <p id="txtSubtitulo">Desarrollador</p>
-                    <div class="button">
-                        <a id="botonInfo" href="#sobre-mi">Sobre mi</a>
-                    </div>
-                </div>
+      <nav>
+        <div class="logo">Portafolio <span>3D</span> profesional</div>
+        <ul id="navegacion">
+          <li><a href="#sobre-mi">Sobre mi</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li class="language-toggle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#ffffff"
+              width="20"
+              height="20"
+              viewBox="0 -4 28 28"
+            >
+              <path
+                d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm10 12c0 .685-.07 1.354-.202 2h-3.853c.121-1.283.129-2.621 0-4h3.853c.132.646.202 1.315.202 2zm-.841-4h-3.5c-.383-1.96-1.052-3.751-1.948-5.278 2.435.977 4.397 2.882 5.448 5.278zm-5.554 0h-2.605v-5.658c1.215 1.46 2.117 3.41 2.605 5.658zm-4.605-5.658v5.658h-2.605c.488-2.248 1.39-4.198 2.605-5.658zm0 7.658v4h-2.93c-.146-1.421-.146-2.577 0-4h2.93zm0 6v5.658c-1.215-1.46-2.117-3.41-2.605-5.658h2.605zm2 5.658v-5.658h2.605c-.488 2.248-1.39 4.198-2.605 5.658zm0-7.658v-4h2.93c.146 1.421.146 2.577 0 4h-2.93zm-4.711-11.278c-.896 1.527-1.565 3.318-1.948 5.278h-3.5c1.051-2.396 3.013-4.301 5.448-5.278zm-6.087 7.278h3.853c-.121 1.283-.129 2.621 0 4h-3.853c-.132-.646-.202-1.315-.202-2s.07-1.354.202-2zm.639 6h3.5c.383 1.96 1.052 3.751 1.948 5.278-2.435-.977-4.397-2.882-5.448-5.278zm12.87 5.278c.896-1.527 1.565-3.318 1.948-5.278h3.5c-1.051 2.396-3.013 4.301-5.448 5.278z"
+              />
+            </svg>
+            <a href="#" class="lang-btn active" data-lang="es">ES</a>/<a
+              href="#"
+              class="lang-btn"
+              data-lang="eng"
+              >EN</a
+            >
+          </li>
+        </ul>
+        <button class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+      <div class="hero-area">
+        <div class="hero-text">
+          <h1>Josué Espinoza</h1>
+          <div class="subtitle">
+            <p>Artista & Modelador 3D</p>
+            <div class="button">
+              <a href="#proyectos">Ver Portafolio</a>
             </div>
-            <div class="socials">
-                <a href="https://github.com/Jozona" class="social">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill='#ffffff' width="50" height="50" viewBox="0 0 24 24">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                </a>
-            </div>
-
+          </div>
         </div>
+
+        <!-- Spline Container -->
+        <div class="spline-container">
+          <spline-viewer
+            url="https://prod.spline.design/ZPumqLhvL6c9nXZN/scene.splinecode"
+            loading="eager"
+            events-target="global"
+            class="spline-model"
+            onerror="this.style.display='none';document.getElementById('spline-fallback').style.display='block';"
+          >
+          </spline-viewer>
+
+          <div id="spline-fallback" style="display: none">
+            <img src="fallback-image.jpg" alt="3D Model Fallback" />
+          </div>
+        </div>
+
+        <div class="socials">
+          <!-- Your social icons remain the same -->
+        </div>
+      </div>
     </section>
+
     <section id="sobre-mi" class="sub-section">
-        <div class="information">
-            <h2 id="hSobreMi">Sobre mi</h2>
-            <p id="txtDescripcion">Hola, mi nombre es Josué Emiliano Espinoza Gutiérrez. Soy un desarrollador de
-                software y actual
-                estudiante de la Facultad de Ciencias Físico-Matemáticas en la Universidad Autónoma de Nuevo León. Estoy
-                estudiando en la carrera de Multimedia y Animación Digital y buscando mejorar como programador. Un
-                gusto. </p>
+      <div class="information">
+        <h2>Sobre mí</h2>
+        <p>
+          Soy Josué Espinoza, artista digital especializado en modelado 3D con
+          más de 3 años de experiencia creando modelos detallados para
+          videojuegos, animación y visualización arquitectónica.
+        </p>
+        <p>
+          Mi pasión por el arte digital comenzó cuando era estudiante de
+          Multimedia y Animación Digital en la Universidad Autónoma de Nuevo
+          León, donde desarrollé habilidades técnicas y artísticas para crear
+          modelos 3D realistas y estilizados.
+        </p>
+        <p>
+          Trabajo principalmente con Blender, Maya y ZBrush, pero también tengo
+          experiencia con Substance Painter para texturizado y Unreal Engine
+          para renderizado en tiempo real.
+        </p>
+
+        <div class="skills-container">
+          <span class="skill">Blender</span>
+          <span class="skill">Maya</span>
+          <span class="skill">Unreal Engine</span>
+          <span class="skill">Certificacion en Ingles C1</span>
+          <span class="skill">Unity</span>
+          <span class="skill">UV Mapping</span>
+          <span class="skill">Modelado arquitectonico</span>
+          <span class="skill">C++</span>
+          <span class="skill">C#</span>
+          <span class="skill">Rigging</span>
         </div>
-
-        <!-- <div class="headshot-container">
-            <img class="headshot" src="./src/imagenes/sobremi.jpg" alt="Foto de josue en una conferencia">
-        </div> -->
-
+      </div>
+      <div class="headshot-container">
+        <img
+          class="headshot"
+          src="/src/imagenes/CuartoPiso2_Espinoza Gutierrez Josue Emiliano.jpg"
+          alt="Foto de Josué Espinoza"
+        />
+      </div>
     </section>
-
-    <!-- <section class="sub-section-alternative">
-        <h2>Lenguajes de programación y programas utilizados</h2>
-        <div class="contenedor-proyectos"> 
-            <div class="tarjeta-proyecto"></div>
-            <div class="tarjeta-proyecto"></div>
-            <div class="tarjeta-proyecto"></div>
-            <div class="tarjeta-proyecto"></div>
-        </div>
-    </section> -->
 
     <section id="proyectos" class="sub-section-alternative">
-        <h2 id="hProyectos">Proyectos</h2>
-        <div class="contenedor-proyectos">
-            <div class="tarjeta-proyecto">
-                <img src="./src/imagenes/intermedia.gif" alt="Gif de tienda en linea">
-                <a href="https://github.com/Jozona/Tienda-En-Linea-Web"><img id="intermedia" class="github"
-                        src="https://gh-card.dev/repos/Jozona/Tienda-En-Linea-Web.svg"></a>
-
+      <h2>Mis Proyectos</h2>
+      <div class="contenedor-proyectos">
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/FinalRender1.png"
+            alt="Modelo 3D de personaje"
+          />
+          <div class="project-info">
+            <h3>Modelado arquitectonico en Blender</h3>
+            <p>
+              Modelado y texturizado de una casa a escala real, creado en
+              Blender.
+            </p>
+            <div class="project-links">
+              <a href="./casaBlender.html">Ver más</a>
             </div>
-            <div class="tarjeta-proyecto">
-                <img src="./src/imagenes/madAdmin.gif" alt="Gif de punto de venta">
-                <a href="https://github.com/Jozona/Punto-de-venta"><img id="mad" class="github"
-                        src="https://gh-card.dev/repos/Jozona/Punto-de-venta.svg"></a>
-            </div>
-            <div class="tarjeta-proyecto">
-                <img src="./src/imagenes/prograweb1.gif" alt="Gif pagina web de blogs">
-                <a href="https://github.com/Jozona/Tu-blog"><img id="web" class="github"
-                        src="https://gh-card.dev/repos/Jozona/Tu-blog.svg"></a>
-            </div>
-            <div class="tarjeta-proyecto">
-                <img style="max-height: 180px;" src="./src/imagenes/aavd.gif"
-                    alt="Gif de aplicacion de escritorio para manejar consumo de energia">
-                <a href="https://github.com/Jozona/AAVD-2"><img id="aavd" class="github"
-                        src="https://gh-card.dev/repos/Jozona/AAVD-2.svg"></a>
-            </div>
+          </div>
         </div>
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/CuartoMaya/ActuallyFinished....jpg"
+            alt="Entorno 3D"
+          />
+          <div class="project-info">
+            <h3>Cuarto de fantasía en Maya</h3>
+            <p>
+              Creación de un entorno detallado para animación, incluyendo
+              modelado, texturas y iluminación.
+            </p>
+            <div class="project-links">
+              <a href="./cuartoFantasia.html">Ver más</a>
+            </div>
+          </div>
+        </div>
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/Casa3dsMax/BanoPiso2_Espinoza Gutierrez Josue Emiliano.jpg"
+            alt="Modelo de vehículo"
+          />
+          <div class="project-info">
+            <h3>Modelado arquitectonico en 3ds max</h3>
+            <p>
+              Modelado hard surface de un vehículo conceptual con detalles de
+              alta poligonización.
+            </p>
+            <div class="project-links">
+              <a href="./casa3dsmax.html">Ver más</a>
+            </div>
+          </div>
+        </div>
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/Unreal/Manejo de blueprints.jpg"
+            alt="Visualización arquitectónica"
+          />
+          <div class="project-info">
+            <h3>Zombie Z</h3>
+            <p>
+              Proyecto en equipo realizado en Unreal. Juego de supervivencia,
+              con jugabilidad, modelos importados, creados y mecanicas
+              implementadas
+            </p>
+            <div class="project-links">
+              <a href="./unreal.html">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/Unity/Haptico.jpg"
+            alt="Visualización arquitectónica"
+          />
+          <div class="project-info">
+            <h3>Haptico en Unity</h3>
+            <p>
+              Proyecto en equipo realizado en Unity. Utilizando Arduino para
+              controlar y enviar direcciones a Unity.
+            </p>
+            <div class="project-links">
+              <a href="/unity.html">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer id="contacto">
-        <h2 id="hContactar">Contáctame</h2>
-        <p><svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="24" height="24" viewBox="1 -4 24 24">
-                <path
-                    d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
-            </svg> jsuespz@gmail.com</p>
+      <h2>Contáctame</h2>
+      <p><i class="fas fa-envelope"></i> jsuespz@gmail.com</p>
+      <p><i class="fas fa-phone-alt"></i> +52 (867) 193-7816</p>
 
-        <p><svg fill="#ffffff" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-                clip-rule="evenodd">
-                <path
-                    d="M16 22.621l-3.521-6.795c-.007.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.082-1.026-3.492-6.817-2.106 1.039c-1.639.855-2.313 2.666-2.289 4.916.075 6.948 6.809 18.071 12.309 18.045.541-.003 1.07-.113 1.58-.346.121-.055 2.102-1.029 2.11-1.033zm-2.5-13.621c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm9 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm-4.5 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5z" />
-            </svg>+52 (867)193-7816</p>
+      <p class="copyright">
+        © 2025 Josué Espinoza. Todos los derechos reservados.
+      </p>
     </footer>
 
-    <script src="./src/app.js"></script>
-</body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("navegacion");
 
+        if (hamburger && navMenu) {
+          hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+          });
+        }
+
+        const navLinks = document.querySelectorAll("#navegacion a");
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            if (!link.closest(".language-toggle")) {
+              navMenu.classList.remove("active");
+            }
+
+            const href = link.getAttribute("href");
+            if (href.startsWith("#")) {
+              e.preventDefault();
+              const target = document.querySelector(href);
+              if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+          });
+        });
+
+        const language = {
+          eng: {
+            heroTitle: "Josué Espinoza",
+            heroSubtitle: "3D Artist & Modeler",
+            aboutButton: "View Portfolio",
+            navAbout: "About me",
+            navProjects: "Projects",
+            navContact: "Contact",
+            aboutTitle: "About me",
+            aboutText1:
+              "Hi, I'm Josué Espinoza, a digital artist specialized in 3D modeling with experience creating detailed models for video games, animation and architectural visualization.",
+            aboutText2:
+              "My passion for digital art began when I was a student of Multimedia and Digital Animation at the Autonomous University of Nuevo León, where I developed technical and artistic skills to create realistic and stylized 3D models.",
+            aboutText3:
+              "I mainly work with Maya, Blender and 3ds max, but I also have experience with game engines such as Unity and Unreal Engine.",
+            projectsTitle: "My Projects",
+            contactTitle: "Contact me",
+          },
+          es: {
+            heroTitle: "Josué Espinoza",
+            heroSubtitle: "Artista & Modelador 3D",
+            aboutButton: "Ver Portafolio",
+            navAbout: "Sobre mi",
+            navProjects: "Proyectos",
+            navContact: "Contacto",
+            aboutTitle: "Sobre mí",
+            aboutText1:
+              "Soy Josué Espinoza, artista digital especializado en modelado 3D con experiencia creando modelos detallados para videojuegos y visualización arquitectónica.",
+            aboutText2:
+              "Mi pasión por el arte digital comenzó cuando era estudiante de Multimedia y Animación Digital en la Universidad Autónoma de Nuevo León, donde desarrollé habilidades técnicas y artísticas para crear modelos 3D realistas y estilizados.",
+            aboutText3:
+              "Trabajo principalmente con Maya, Blender y 3ds max. Tambien cuento con experiencia en motores de videojuegos como Unity y Unreal Engine.",
+            projectsTitle: "Mis Proyectos",
+            contactTitle: "Contáctame",
+          },
+        };
+
+        function changeLanguage(lang) {
+          const currentLang = language[lang];
+
+          // Hero
+          const heroTitle = document.querySelector(".hero-text h1");
+          const heroSubtitle = document.querySelector(".subtitle p");
+          const aboutButton = document.querySelector(".button a");
+
+          if (heroTitle) heroTitle.textContent = currentLang.heroTitle;
+          if (heroSubtitle) heroSubtitle.textContent = currentLang.heroSubtitle;
+          if (aboutButton) aboutButton.textContent = currentLang.aboutButton;
+
+          // Navigation
+          const navItems = document.querySelectorAll(
+            "#navegacion li a:not(.lang-btn)"
+          );
+          if (navItems.length >= 3) {
+            navItems[0].textContent = currentLang.navAbout;
+            navItems[1].textContent = currentLang.navProjects;
+            navItems[2].textContent = currentLang.navContact;
+          }
+
+          // About
+          const aboutTitle = document.querySelector(".information h2");
+          const aboutParagraphs = document.querySelectorAll(".information p");
+          if (aboutTitle) aboutTitle.textContent = currentLang.aboutTitle;
+          if (aboutParagraphs.length >= 3) {
+            aboutParagraphs[0].textContent = currentLang.aboutText1;
+            aboutParagraphs[1].textContent = currentLang.aboutText2;
+            aboutParagraphs[2].textContent = currentLang.aboutText3;
+          }
+
+          // Projects
+          const projectsTitle = document.querySelector(
+            ".sub-section-alternative h2"
+          );
+          if (projectsTitle)
+            projectsTitle.textContent = currentLang.projectsTitle;
+
+          // Contact
+          const contactTitle = document.querySelector("footer h2");
+          if (contactTitle) contactTitle.textContent = currentLang.contactTitle;
+        }
+
+        // Idioma desde botones
+        const langButtons = document.querySelectorAll(".lang-btn");
+        langButtons.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const lang = this.getAttribute("data-lang");
+            changeLanguage(lang);
+            localStorage.setItem("language", lang);
+
+            langButtons.forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+          });
+        });
+
+        // Idioma guardado
+        const savedLang = localStorage.getItem("language") || "es";
+        changeLanguage(savedLang);
+        langButtons.forEach((btn) => {
+          const btnLang = btn.getAttribute("data-lang");
+          btn.classList.toggle("active", btnLang === savedLang);
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Lazy load Spline viewer
+        const splineContainer = document.querySelector(".spline-container");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const script = document.createElement("script");
+                script.type = "module";
+                script.src =
+                  "https://unpkg.com/@splinetool/viewer@1.10.38/build/spline-viewer.js";
+                document.body.appendChild(script);
+
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        observer.observe(splineContainer);
+      });
+
+      // Ajuste dinámico del modelo 3D
+      function adjustSplineViewer() {
+        const splineViewer = document.querySelector("spline-viewer");
+        const container = document.querySelector(".spline-container");
+
+        if (splineViewer && container) {
+          const containerWidth = container.offsetWidth;
+          const windowHeight = window.innerHeight;
+
+          // Ajuste para pantallas muy anchas
+          if (containerWidth > 600) {
+            splineViewer.style.transform = "scale(1.1)";
+          }
+          // Ajuste para pantallas verticales
+          else if (windowHeight > window.innerWidth) {
+            splineViewer.style.transform = "scale(0.8)";
+          } else {
+            splineViewer.style.transform = "scale(1)";
+          }
+        }
+      }
+
+      // Ejecutar al cargar y al redimensionar
+      window.addEventListener("load", adjustSplineViewer);
+      window.addEventListener("resize", adjustSplineViewer);
+      splineViewer.addEventListener("load", () => {
+        const loader = splineViewer.shadowRoot.querySelector(".loading");
+        if (loader) loader.style.display = "none";
+      });
+    </script>
+
+    <script>
+      const splineViewer = document.querySelector("spline-viewer");
+      splineViewer.addEventListener("load", () => {
+        const loader = splineViewer.shadowRoot.querySelector(".loading");
+        if (loader) loader.style.display = "none";
+      });
+    </script>
+  </body>
 </html>

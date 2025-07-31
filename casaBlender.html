@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casa Blender - Proyecto</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      header {
+        background-color: #111;
+        color: #fff;
+        padding: 1rem 2rem;
+        text-align: center;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 1rem;
+      }
+      .project-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .project-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+      .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+      }
+      .image-gallery img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      .process-section {
+        margin-top: 3rem;
+      }
+      .process-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+      .step {
+        margin-bottom: 1.5rem;
+      }
+      .step h3 {
+        font-size: 1.3rem;
+        color: #111;
+        margin-bottom: 0.5rem;
+      }
+      .step p {
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.6;
+      }
+
+      .back-button {
+        background-color: #111;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+        transition: background-color 0.3s ease;
+      }
+      .back-button:hover {
+        background-color: #333;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0.5rem;
+        }
+
+        .project-title {
+          font-size: 1.5rem;
+        }
+
+        .project-description,
+        .step p {
+          font-size: 1rem;
+        }
+
+        .step h3 {
+          font-size: 1.1rem;
+        }
+
+        .process-section h2 {
+          font-size: 1.5rem;
+        }
+
+        .back-button {
+          width: 100%;
+          font-size: 1rem;
+        }
+
+        .image-gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0.5rem;
+        }
+
+        .project-title {
+          font-size: 1.5rem;
+        }
+
+        .project-description,
+        .step p {
+          font-size: 1rem;
+        }
+
+        .step h3 {
+          font-size: 1.1rem;
+        }
+
+        .process-section h2 {
+          font-size: 1.5rem;
+        }
+
+        .back-button {
+          width: 100%;
+          font-size: 1rem;
+        }
+
+        .image-gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 760px) {
+        header h1 {
+          font-size: 1.2rem;
+        }
+
+        .project-description,
+        .step p {
+          font-size: 0.95rem;
+        }
+
+        .step h3 {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Modelado arquitectónico en Blender</h1>
+    </header>
+
+    <div class="container">
+      <button class="back-button" onclick="window.location.href='index.html'">
+        ← Regresar
+      </button>
+      <h2 class="project-title">Casa moderna 3D</h2>
+      <p class="project-description">
+        Este proyecto consiste en la creación de una casa moderna utilizando
+        Blender. Se modelaron muros, ventanas, puertas y techos con medidas
+        reales, además de aplicar materiales PBR para lograr una apariencia
+        realista. Se buscó un diseño limpio y elegante, con iluminación
+        ambiental realista mediante HDRI.
+      </p>
+
+      <h3>Habilidades adquiridas:</h3>
+      <ul class="skills-list">
+        <li>Modelado de objetos</li>
+        <li>Manejo de modelos</li>
+        <li>Creación de texturas</li>
+        <li>Mapeo de UVs</li>
+        <li>Lectura de planos reales</li>
+        <li>Manejo de iluminación</li>
+      </ul>
+
+      <div class="image-gallery">
+        <img
+          src="./src/imagenes/CasaBlender/Paso1/Front View Blueprint.png"
+          alt="Vista frontal del modelo"
+        />
+        <img src="./src/imagenes/FinalRender1.png" alt="Render de interior" />
+      </div>
+
+      <section class="process-section">
+        <h2>Etapas del proceso</h2>
+
+        <div class="step">
+          <h3>1. Blockout</h3>
+          <p>
+            Se realizó una maqueta base (blockout) para establecer la forma
+            general y proporciones de la casa. En esta etapa se definieron los
+            volúmenes principales y la distribución espacial.
+          </p>
+
+          <div class="image-gallery">
+            <img
+              src="./src/imagenes/CasaBlender/Paso1/Front View Blueprint.png"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso1/Side View Blueprint.png"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso1/PrimerPiso.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso1/SideFloor.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso1/Blockout.jpg"
+              alt="Vista frontal del modelo"
+            />
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>2. High Poly</h3>
+          <p>
+            Se detallaron los elementos arquitectónicos como marcos de ventanas,
+            techos, columnas y molduras. Esta versión incluye mayor número de
+            polígonos para capturar la riqueza visual.
+          </p>
+
+          <div class="image-gallery">
+            <img
+              src="./src/imagenes/CasaBlender/Paso3/Agregar arboles.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso3/HacerPintura.png"
+              alt="Vista frontal del modelo"
+            />
+
+            <img
+              src="./src/imagenes/CasaBlender/Paso3/Detalles.jpg"
+              alt="Vista frontal del modelo"
+            />
+
+            <img
+              src="./src/imagenes/CasaBlender/Paso3/CortinaShader.jpg"
+              alt="Vista frontal del modelo"
+            />
+
+            <img
+              src="./src/imagenes/CasaBlender/Paso3/AgregarMuebles.jpg"
+              alt="Vista frontal del modelo"
+            />
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>3. Low Poly</h3>
+          <p>
+            Se optimizó la geometría para mantener el detalle esencial pero
+            reducir la cantidad de polígonos. Esta versión es ideal para
+            visualizaciones en tiempo real o para exportar a motores como Unreal
+            o Unity.
+          </p>
+
+          <div class="image-gallery">
+            <img
+              src="./src/imagenes/CasaBlender/Paso2/AgregarLucesInteriores.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso2/AgregarLuces.jpg"
+              alt="Vista frontal del modelo"
+            />
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>4. UV Mapping</h3>
+          <p>
+            Se desplegaron las coordenadas UV del modelo para preparar la
+            superficie del objeto y así poder aplicar texturas sin distorsión.
+          </p>
+
+          <div class="image-gallery">
+            <img
+              src="./src/imagenes/CasaBlender/Paso2/Muro.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso2/Organizar UVs.jpg"
+              alt="Vista frontal del modelo"
+            />
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>5. Texturizado</h3>
+          <p>
+            Se aplicaron materiales y texturas utilizando nodos en Blender. Se
+            usaron mapas PBR (difuso, normal, rugosidad) para lograr un acabado
+            realista en paredes, cristales y concreto.
+          </p>
+
+          <div class="image-gallery">
+            <img
+              src="./src/imagenes/CasaBlender/Paso2/Agregar luces.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso2/AgregarIlumacion.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso2/AgregarLuces.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso2/AgregarLucesInteriores.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/CasaBlender/Paso2/Concreto limpio.jpg"
+              alt="Vista frontal del modelo"
+            />
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>6. Renderizado</h3>
+          <p>
+            Se preparo la escena para ser renderizada, aqui encontramo el
+            resultado final
+          </p>
+
+          <div class="image-gallery">
+            <img
+              src="./src/imagenes/CasaBlender/Paso3/Preparar render.jpg"
+              alt="Vista frontal del modelo"
+            />
+            <img
+              src="./src/imagenes/FinalRender1.png"
+              alt="Vista frontal del modelo"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>© 2025 Josué Espinoza. Proyecto realizado con Blender.</footer>
+  </body>
+</html>
