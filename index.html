@@ -625,7 +625,7 @@
   <body>
     <section class="hero">
       <nav>
-        <div class="logo">Portafolio <span>3D</span> profesional</div>
+        <div class="logo">Portafolio</div>
         <ul id="navegacion">
           <li><a href="#sobre-mi">Sobre mi</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
@@ -691,33 +691,26 @@
       <div class="information">
         <h2>Sobre mí</h2>
         <p>
-          Soy Josué Espinoza, artista digital especializado en modelado 3D con
-          más de 3 años de experiencia creando modelos detallados para
-          videojuegos, animación y visualización arquitectónica.
+          Soy Josué Espinoza, desarrollador de software y artista digital
+          especializado en la creacion de experiencias multimedia
         </p>
         <p>
           Mi pasión por el arte digital comenzó cuando era estudiante de
           Multimedia y Animación Digital en la Universidad Autónoma de Nuevo
           León, donde desarrollé habilidades técnicas y artísticas para crear
-          modelos 3D realistas y estilizados.
-        </p>
-        <p>
-          Trabajo principalmente con Blender, Maya y ZBrush, pero también tengo
-          experiencia con Substance Painter para texturizado y Unreal Engine
-          para renderizado en tiempo real.
+          experiencias inmersivas y modernas.
         </p>
 
         <div class="skills-container">
           <span class="skill">Blender</span>
-          <span class="skill">Maya</span>
-          <span class="skill">Unreal Engine</span>
-          <span class="skill">Certificacion en Ingles C1</span>
           <span class="skill">Unity</span>
+          <span class="skill">C#</span>
+          <span class="skill">Bases de datos</span>
+          <span class="skill">RestAPI</span>
+          <span class="skill">Certificacion en Ingles C1</span>
           <span class="skill">UV Mapping</span>
           <span class="skill">Modelado arquitectonico</span>
           <span class="skill">C++</span>
-          <span class="skill">C#</span>
-          <span class="skill">Rigging</span>
         </div>
       </div>
       <div class="headshot-container">
@@ -732,6 +725,60 @@
     <section id="proyectos" class="sub-section-alternative">
       <h2>Mis Proyectos</h2>
       <div class="contenedor-proyectos">
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/Untitled1.jpg"
+            alt="Visualización arquitectónica"
+          />
+          <div class="project-info">
+            <h3>
+              Simulación de muebles y edificios en Realidad Aumentada - Unity
+              (C#)
+            </h3>
+            <p>
+              Proyecto realizado en Unity para la visualizacion de muebles por
+              medio de la realidad aumentada.
+            </p>
+            <div class="project-links">
+              <a href="/muebles.html">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/mad.gif"
+            alt="Visualización arquitectónica"
+          />
+          <div class="project-info">
+            <h3>Sistema de punto de venta en C# y Winforms</h3>
+            <p>
+              Un punto de venta hecho en WinForms con SQL Server para atender
+              ventas de un cajero en tiendas de cualquier tipo / Point of sale
+              made with WinForms and SQL Server, it can perform purchases from
+              any kind of store counter.
+            </p>
+            <div class="project-links">
+              <a href="/unity.html">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tarjeta-proyecto">
+          <img src="./src/imagenes/Untitled.jpg" alt="Modelo de vehículo" />
+          <div class="project-info">
+            <h3>Planetas y simulación de turbina en AR</h3>
+            <p>
+              Dos proyectos de visualización de realidad aumentada con el uso de
+              Unity. Un conjunto de planetas y una turbina con la que se puede
+              interactuar
+            </p>
+            <div class="project-links">
+              <a href="./casa3dsmax.html">Ver más</a>
+            </div>
+          </div>
+        </div>
+
         <div class="tarjeta-proyecto">
           <img
             src="./src/imagenes/FinalRender1.png"
@@ -750,50 +797,17 @@
         </div>
         <div class="tarjeta-proyecto">
           <img
-            src="./src/imagenes/CuartoMaya/ActuallyFinished....jpg"
+            src="./src/imagenes/0E7F53B8-0216-45B5-87A2-52F0D7FCC3E5.png"
             alt="Entorno 3D"
           />
           <div class="project-info">
-            <h3>Cuarto de fantasía en Maya</h3>
+            <h3>Modelado de landscape</h3>
             <p>
-              Creación de un entorno detallado para animación, incluyendo
-              modelado, texturas y iluminación.
+              Creación de un entorno detallado para el render un plano dentro de
+              la herramienta de blender
             </p>
             <div class="project-links">
               <a href="./cuartoFantasia.html">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="tarjeta-proyecto">
-          <img
-            src="./src/imagenes/Casa3dsMax/BanoPiso2_Espinoza Gutierrez Josue Emiliano.jpg"
-            alt="Modelo de vehículo"
-          />
-          <div class="project-info">
-            <h3>Modelado arquitectonico en 3ds max</h3>
-            <p>
-              Modelado hard surface de un vehículo conceptual con detalles de
-              alta poligonización.
-            </p>
-            <div class="project-links">
-              <a href="./casa3dsmax.html">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="tarjeta-proyecto">
-          <img
-            src="./src/imagenes/Unreal/Manejo de blueprints.jpg"
-            alt="Visualización arquitectónica"
-          />
-          <div class="project-info">
-            <h3>Zombie Z</h3>
-            <p>
-              Proyecto en equipo realizado en Unreal. Juego de supervivencia,
-              con jugabilidad, modelos importados, creados y mecanicas
-              implementadas
-            </p>
-            <div class="project-links">
-              <a href="./unreal.html">Ver más</a>
             </div>
           </div>
         </div>
@@ -811,6 +825,24 @@
             </p>
             <div class="project-links">
               <a href="/unity.html">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/Unreal/Manejo de blueprints.jpg"
+            alt="Visualización arquitectónica"
+          />
+          <div class="project-info">
+            <h3>Zombie Z</h3>
+            <p>
+              Proyecto en equipo realizado en Unreal. Juego de supervivencia,
+              con jugabilidad, modelos importados, creados y mecanicas
+              implementadas
+            </p>
+            <div class="project-links">
+              <a href="./unreal.html">Ver más</a>
             </div>
           </div>
         </div>
@@ -876,14 +908,14 @@
           },
           es: {
             heroTitle: "Josué Espinoza",
-            heroSubtitle: "Artista & Modelador 3D",
+            heroSubtitle: "Programador y artista digital",
             aboutButton: "Ver Portafolio",
             navAbout: "Sobre mi",
             navProjects: "Proyectos",
             navContact: "Contacto",
             aboutTitle: "Sobre mí",
             aboutText1:
-              "Soy Josué Espinoza, artista digital especializado en modelado 3D con experiencia creando modelos detallados para videojuegos y visualización arquitectónica.",
+              "Soy Josué Espinoza, desarrollador de software y artista digital especializado en la creacion de experiencias multimedia",
             aboutText2:
               "Mi pasión por el arte digital comenzó cuando era estudiante de Multimedia y Animación Digital en la Universidad Autónoma de Nuevo León, donde desarrollé habilidades técnicas y artísticas para crear modelos 3D realistas y estilizados.",
             aboutText3:
