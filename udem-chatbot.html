@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asistente Académico UDEM | Chatbot con IA</title>
+    <meta
+      name="description"
+      content="Chatbot inteligente para orientación académica en la Universidad de Monterrey. Desarrollado con Google Gemini 3.0 Flash y RAG en frontend."
+    />
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+    <div class="elfsight-app-dc4a6d0e-6a07-4558-a18c-3fb1a2b9648f"></div>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/696d650a89.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      section {
+        background-color: white;
+      }
+
+      .hero {
+        background-color: #395144;
+        height: 100vh;
+        color: white;
+        font-size: 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("./src/imagenes/chatbot.gif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .hero > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero nav,
+      .hero-area,
+      .socials {
+        position: relative;
+        z-index: 2;
+      }
+
+      footer {
+        height: 500px;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 80px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      ul {
+        display: flex;
+        list-style-type: none;
+        width: 750px;
+        justify-content: space-around;
+        font-size: 30px;
+      }
+
+      ul.mostrar {
+        display: block;
+      }
+
+      li {
+        text-decoration: none;
+      }
+
+      h1 {
+        font-size: 40px;
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .hero-text {
+        margin-left: 40px;
+        font-weight: 600;
+        margin-bottom: 300px;
+      }
+
+      .hero-area {
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .button {
+        width: 200px;
+        height: 55px;
+        border-radius: 40px;
+        text-align: center;
+        padding-top: 5px;
+        background-color: coral;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #ef744b;
+      }
+
+      .button:active {
+        background-color: gray;
+        color: #808080;
+      }
+
+      .socials {
+        padding-bottom: 300px;
+      }
+
+      .social {
+        margin: 10px;
+      }
+
+      .sub-section-alternative {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 20px;
+      }
+
+      h2 {
+        font-size: 50px;
+      }
+
+      .tarjeta-proyecto {
+        width: 400px;
+        height: 500px;
+        box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.527);
+        margin: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tarjeta-proyecto img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .contenedor-proyectos {
+        display: flex;
+        justify-content: space-around;
+        padding: 80px;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .hamburger {
+        display: none;
+      }
+
+      .hamburger:focus {
+        outline: 0;
+      }
+
+      /* Animación */
+      :root {
+        --bg-color: #395144;
+        --typewriterSpeed: 2s;
+        --typewriterCharacters: 24;
+      }
+
+      .animacion h1 {
+        font-size: clamp(1rem, 3vw + 1rem, 4rem);
+        position: relative;
+        font-family: "Poppins", sans-serif;
+        width: max-content;
+      }
+
+      .animacion h1::before,
+      .animacion h1::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      .animacion h1::before {
+        background: var(--bg-color);
+        animation: typewriter var(--typewriterSpeed)
+          steps(var(--typewriterCharacters)) 1s forwards;
+      }
+
+      .animacion h1::after {
+        width: 0.125em;
+        background: black;
+        animation: typewriter var(--typewriterSpeed)
+            steps(var(--typewriterCharacters)) 1s forwards,
+          blink 750ms steps(var(--typewriterCharacters)) infinite;
+      }
+
+      .animacion .subtitle {
+        color: rgb(255, 255, 255);
+        font-size: 2rem;
+        font-weight: 400;
+        opacity: 0;
+        transform: translateY(3rem);
+        animation: fadeInUp 1s ease calc(var(--typewriterSpeed) + 1s) forwards;
+      }
+
+      @keyframes typewriter {
+        to {
+          left: 100%;
+        }
+      }
+
+      @keyframes blink {
+        to {
+          background: transparent;
+        }
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* NUEVOS ESTILOS PARA EXPERIENCIA */
+      .contenedor-experiencia {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .tarjeta-experiencia {
+        background-color: #f5f5f5;
+        border-radius: 15px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        border-left: 4px solid #395144;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .experiencia-header {
+        margin-bottom: 1rem;
+      }
+
+      .experiencia-header h3 {
+        color: #395144;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .empresa {
+        color: coral;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .tecnologias-usadas {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #ddd;
+      }
+
+      .tecnologias-usadas p {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* NUEVOS ESTILOS PARA CARACTERÍSTICAS */
+      .contenedor-caracteristicas {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .tarjeta-caracteristica {
+        background-color: #f5f5f5;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .tarjeta-caracteristica:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .tarjeta-caracteristica h4 {
+        color: #395144;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .tarjeta-caracteristica p {
+        color: #555;
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      .icono-caracteristica {
+        font-size: 2.5rem;
+        color: coral;
+        margin-bottom: 1rem;
+      }
+
+      /* RESPONSIVE */
+      @media only screen and (max-width: 1000px) {
+        .contenedor-proyectos {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .tarjeta-proyecto {
+          margin: 30px;
+        }
+
+        .hamburger {
+          display: block;
+          border: 0;
+          background-color: transparent;
+          color: white;
+          font-size: 30px;
+          margin: 20px;
+          align-self: flex-end;
+        }
+
+        ul {
+          display: none;
+          background-color: #4e6c50;
+        }
+
+        nav {
+          display: flex;
+          flex-direction: column-reverse;
+          background-color: #4e6c50;
+        }
+
+        .tarjeta-experiencia {
+          padding: 1.5rem;
+        }
+
+        .experiencia-header h3 {
+          font-size: 1.5rem;
+        }
+
+        .contenedor-caracteristicas {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+      }
+
+      @media only screen and (max-width: 500px) {
+        footer h2 {
+          font-size: 24px;
+        }
+
+        .subtitle p {
+          font-size: 18px;
+        }
+
+        .button {
+          width: 120px;
+          height: 55px;
+          padding-top: 0px;
+        }
+
+        .button a {
+          font-size: 20px;
+          margin: 0;
+        }
+
+        .hero-text {
+          margin-left: 25px;
+        }
+
+        .tarjeta-experiencia {
+          padding: 1rem;
+        }
+
+        .contenedor-caracteristicas {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          padding: 20px 10px;
+        }
+
+        .tarjeta-caracteristica {
+          padding: 1.5rem;
+        }
+
+        .tarjeta-proyecto {
+          width: 90%;
+          height: auto;
+          min-height: 400px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <nav>
+        <div></div>
+        <ul>
+          <li><a href="./index.html">Inicio</a></li>
+          <li><a href="#demo">Video</a></li>
+          <li><a href="#descripcion">Descripción</a></li>
+          <li><a href="#caracteristicas">Características</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+
+      <div class="hero-area">
+        <div class="hero-text animacion">
+          <h1>Asistente UDEM</h1>
+          <div class="subtitle">
+            <p>Tu orientador académico con Inteligencia Artificial</p>
+            <div class="button">
+              <a href="#demo"> Demo</a>
+            </div>
+          </div>
+        </div>
+        <div class="socials">
+          <a
+            href="https://github.com/tu-usuario/chatbot-udem"
+            class="social"
+            target="_blank"
+          >
+            <i class="fab fa-github" style="font-size: 50px; color: white"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="demo"
+      class="sub-section-alternative"
+      style="background-color: #f9f9f9"
+    >
+      <h2>Video Demostrativo</h2>
+      <div style="max-width: 1400px; margin: 40px auto; padding: 20px">
+        <div
+          style="
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background-color: #000;
+          "
+        >
+          <iframe
+            src="https://www.youtube.com/embed/TqL6pcsGOFg?rel=0"
+            title="Demo del Asistente UDEM"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border: none;
+            "
+          >
+          </iframe>
+        </div>
+        <p
+          style="
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+          "
+        >
+          Si el video no se muestra,
+          <a
+            href="https://www.youtube.com/watch?v=TqL6pcsGOFg"
+            target="_blank"
+            style="color: coral; text-decoration: underline"
+            >haz clic aquí para verlo en YouTube</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <!-- DESCRIPCIÓN -->
+    <section id="descripcion" class="sub-section-alternative">
+      <h2>Sobre el Proyecto</h2>
+      <div class="contenedor-experiencia">
+        <div class="tarjeta-experiencia">
+          <div class="experiencia-header">
+            <h3>Asistente Académico Inteligente para la UDEM</h3>
+            <div class="empresa">Proyecto con Google Gemini 3.0</div>
+          </div>
+
+          <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #444">
+            Un chatbot flotante que ayuda a estudiantes y aspirantes a explorar
+            carreras, requisitos, duración y perfil de ingreso en la Universidad
+            de Monterrey. Funciona 100% en el navegador, sin backend, y responde
+            en tiempo real con información oficial.
+          </p>
+
+          <div class="tecnologias-usadas">
+            <p><strong>Tecnologías utilizadas:</strong></p>
+            <p>
+              JavaScript (Vanilla) • Google Gemini 3.0 • HTML5 • CSS3 •
+              Retrieval-Augmented Generation • Font Awesome • Google Fonts
+              (Poppins)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS PRINCIPALES -->
+    <section
+      id="caracteristicas"
+      class="sub-section-alternative"
+      style="background-color: #f9f9f9"
+    >
+      <h2>Características Principales</h2>
+      <div class="contenedor-caracteristicas">
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h4>Respuestas Rápidas y Precisas</h4>
+          <p>
+            Implementación de Retrieval-Augmented Generation (RAG) en frontend
+            para proporcionar información exacta en tiempo real.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h4>Consumo Mínimo de API</h4>
+          <p>
+            Procesa archivos de más de 16,000 líneas sin enviar todo el
+            contenido en cada consulta, optimizando costos y velocidad.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h4>Interfaz Moderna y Responsive</h4>
+          <p>
+            Botón flotante, ventana animada y diseño optimizado para móvil y
+            escritorio que garantiza la mejor experiencia en cualquier
+            dispositivo.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h4>Experiencia de Usuario Fluida</h4>
+          <p>
+            Indicador de "escribiendo...", manejo inteligente de errores y
+            scroll automático para una interacción natural.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-server"></i>
+          </div>
+          <h4>Totalmente Autónomo</h4>
+          <p>
+            No requiere servidor backend, ideal para integración rápida en
+            cualquier sitio web estático o dinámico.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4>Privacidad y Seguridad</h4>
+          <p>
+            Toda la lógica se ejecuta en el cliente, sin exposición innecesaria
+            de datos sensibles del usuario.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA DE CAPTURAS -->
+    <section id="capturas" class="sub-section-alternative">
+      <h2>Capturas del Chatbot</h2>
+      <div class="contenedor-proyectos">
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/chatbot/1.jpg"
+            alt="Botón flotante del chatbot"
+          />
+        </div>
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/chatbot/3.jpg"
+            alt="Chat abierto con conversación"
+          />
+        </div>
+        <div class="tarjeta-proyecto">
+          <img
+            src="./src/imagenes/chatbot/4.jpg"
+            alt="Respuesta detallada sobre una carrera"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO DEMO -->
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+      <h2 id="hContactar">Contáctame</h2>
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#ffffff"
+          width="24"
+          height="24"
+          viewBox="1 -4 24 24"
+        >
+          <path
+            d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"
+          />
+        </svg>
+        josue.espinoza.gtr@gmail.com
+      </p>
+
+      <p>
+        <svg
+          fill="#ffffff"
+          width="24"
+          height="24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+        >
+          <path
+            d="M16 22.621l-3.521-6.795c-.007.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.082-1.026-3.492-6.817-2.106 1.039c-1.639.855-2.313 2.666-2.289 4.916.075 6.948 6.809 18.071 12.309 18.045.541-.003 1.07-.113 1.58-.346.121-.055 2.102-1.029 2.11-1.033zm-2.5-13.621c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm9 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm-4.5 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5z"
+          /></svg
+        >+52 (867)193-7816
+      </p>
+    </footer>
+
+    <!-- Script para menú hamburguesa -->
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navUL = document.querySelector("nav ul");
+
+      if (hamburger) {
+        hamburger.addEventListener("click", () => {
+          navUL.classList.toggle("mostrar");
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -18,6 +18,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portafolio</title>
+    <style>
+      /* Estilos adicionales para el layout lado a lado */
+      .combined-section {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      @media (min-width: 1024px) {
+        .combined-section {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 3rem;
+        }
+
+        .combined-section > section {
+          flex: 1;
+          margin: 0 !important;
+          padding: 2rem !important;
+        }
+
+        #sobre-mi {
+          max-width: 45%;
+        }
+
+        #habilidades {
+          max-width: 55%;
+        }
+      }
+
+      @media (max-width: 1023px) {
+        .combined-section > section {
+        }
+      }
+
+      /* Estilos para el visor de CV */
+      .cv-container {
+        margin-top: 2rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        background-color: #f9f9f9;
+      }
+
+      .cv-container h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: #333;
+        font-size: 1.3rem;
+      }
+
+      .cv-container iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+        border-radius: 4px;
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        padding: 0.75rem 1.5rem;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-download:hover {
+        background-color: #0056b3;
+      }
+
+      .btn-download svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      @media (max-width: 768px) {
+        .cv-container iframe {
+          height: 400px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -76,81 +168,142 @@
         </div>
       </div>
     </section>
-    <section id="sobre-mi" class="sub-section">
-      <div class="information">
-        <h2 id="hSobreMi">Sobre mi</h2>
-        <p id="txtDescripcion">
-          Hola, mi nombre es Josué Emiliano Espinoza Gutiérrez. Soy un
-          desarrollador de software egresado de la Facultad de Ciencias
-          Físico-Matemáticas en la Universidad Autónoma de Nuevo León.
-          Actualmente me encuentro laborando como desarrollador de software en
-          Monterrey, Nuevo Leon. Estoy certificado internacionalmente por el
-          TOEFL iBT en el idioma ingles con un nivel avanzado de inglés (C1).
-        </p>
-      </div>
 
-      <!-- <div class="headshot-container">
-            <img class="headshot" src="./src/imagenes/sobremi.jpg" alt="Foto de josue en una conferencia">
-        </div> -->
-    </section>
+    <!-- Contenedor combinado para Sobre mi y Habilidades -->
+    <div class="combined-section">
+      <section id="sobre-mi" class="sub-section">
+        <div class="information">
+          <h2 id="hSobreMi">Sobre mi</h2>
+          <p id="txtDescripcion">
+            Hola, mi nombre es Josué Emiliano Espinoza Gutiérrez. Soy un
+            desarrollador de software egresado de la Facultad de Ciencias
+            Físico-Matemáticas en la Universidad Autónoma de Nuevo León.
+            Actualmente me encuentro laborando como desarrollador de software en
+            Monterrey, Nuevo Leon. Estoy certificado internacionalmente por el
+            TOEFL iBT en el idioma ingles con un nivel avanzado de inglés (C1).
+          </p>
 
-    <!-- <section class="sub-section-alternative">
-        <h2>Lenguajes de programación y programas utilizados</h2>
-        <div class="contenedor-proyectos"> 
-            <div class="tarjeta-proyecto"></div>
-            <div class="tarjeta-proyecto"></div>
-            <div class="tarjeta-proyecto"></div>
-            <div class="tarjeta-proyecto"></div>
+          <!-- Visor de CV en PDF -->
+          <div class="cv-container">
+            <h3>Mi Currículum</h3>
+            <iframe
+              src="./src/cv.pdf"
+              type="application/pdf"
+              title="Currículum Vitae"
+            ></iframe>
+            <a
+              href="./src/cv.pdf"
+              download="CV_Josue_Espinoza.pdf"
+              class="btn-download"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Descargar CV
+            </a>
+          </div>
         </div>
-    </section> -->
-    <section id="habilidades" class="sub-section-alternative">
-      <h2 id="hHabilidadesTxt">Habilidades Técnicas</h2>
-      <div class="contenedor-habilidades">
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/laravel.jpg" alt="Laravel" />
-          <p>Laravel</p>
+      </section>
+
+      <section id="habilidades" class="sub-section-alternative">
+        <h2 id="hHabilidadesTxt">Habilidades Técnicas</h2>
+        <div class="contenedor-habilidades">
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/copilot.png" alt="Copilot" />
+            <p>Microsoft Copilot Studio</p>
+          </div>
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/php.svg" alt="PHP" />
+            <p>PHP</p>
+          </div>
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/azure.png" alt="Azure" />
+            <p>Azure</p>
+          </div>
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/sqlserver.png" alt="SQL Server" />
+            <p>SQL Server</p>
+          </div>
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/javascript.png" alt="JavaScript" />
+            <p>JavaScript</p>
+          </div>
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/bootstrap.png" alt="Bootstrap" />
+            <p>Bootstrap</p>
+          </div>
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/git.png" alt="Git" />
+            <p>Git</p>
+          </div>
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/api.webp" alt="APIs REST" />
+            <p>APIs REST</p>
+          </div>
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/html.png" alt="HTML" />
+            <p>HTML5</p>
+          </div>
+          <div class="tarjeta-habilidad">
+            <img src="./src/imagenes/css.png" alt="CSS" />
+            <p>CSS3</p>
+          </div>
         </div>
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/php.svg" alt="PHP" />
-          <p>PHP</p>
-        </div>
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/mysql.png" alt="MySQL" />
-          <p>MySQL</p>
-        </div>
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/sqlserver.png" alt="SQL Server" />
-          <p>SQL Server</p>
-        </div>
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/javascript.png" alt="JavaScript" />
-          <p>JavaScript</p>
-        </div>
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/bootstrap.png" alt="Bootstrap" />
-          <p>Bootstrap</p>
-        </div>
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/git.png" alt="Git" />
-          <p>Git</p>
-        </div>
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/api.webp" alt="APIs REST" />
-          <p>APIs REST</p>
-        </div>
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/html.png" alt="HTML" />
-          <p>HTML5</p>
-        </div>
-        <div class="tarjeta-habilidad">
-          <img src="./src/imagenes/css.png" alt="CSS" />
-          <p>CSS3</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <section id="proyectos" class="sub-section-alternative">
       <h2 id="hProyectos">Proyectos</h2>
+      <div class="contenedor-proyectos">
+        <div class="tarjeta-proyecto">
+          <a href="./udem-chatbot.html"
+            ><img src="./src/imagenes/chatbot.gif" alt="Gif de tienda en linea"
+          /></a>
+          <h3>Chatbot UDEM</h3>
+          <p style="margin: 10px">
+            Chatbot IA creado con Gemini. Atiende preguntas de aspirantes a
+            entrar a una carrera universitaria en la Universidad de Monterrey
+          </p>
+          <br />
+          <a class="ver-mas" href="./udem-chatbot.html">Ver mas/Demo -></a>
+        </div>
+        <div class="tarjeta-proyecto">
+          <a href="./copilot.html"
+            ><img src="./src/imagenes/copilot.gif" alt="Gif de copilot" />
+          </a>
+          <p style="margin: 10px">
+            Agente de Inteligencia Artificial creado en Copilot studio,
+            utilizando la Power Platform y Azure, este agente apoya en la
+            creacion de tickets generados por estudiantes.
+          </p>
+          <br />
+          <a class="ver-mas" href="./copilot.html">Ver mas/Demo -></a>
+        </div>
+        <div class="tarjeta-proyecto">
+          <a href="./trabajos.html"
+            ><img
+              src="./src/imagenes/trabajos.gif"
+              alt="Gif de tienda en linea"
+            />
+          </a>
+          <p style="margin: 10px">
+            Aplicacion web hecha para que las personas puedan encontrar su
+            vacante de trabajo ideal en Indeed en base a su personalidad
+          </p>
+          <br />
+          <a class="ver-mas" href="./trabajos.html">Ver mas/Demo -></a>
+        </div>
+      </div>
       <div class="contenedor-proyectos">
         <div class="tarjeta-proyecto">
           <img
@@ -215,7 +368,7 @@
             d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"
           />
         </svg>
-        jsuespz@gmail.com
+        josue.espinoza.gtr@gmail.com
       </p>
 
       <p>

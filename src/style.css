@@ -150,10 +150,21 @@ h2 {
 }
 
 .tarjeta-proyecto {
-  width: 400px;
-  height: 300px;
+  width: 600px;
+  height: 405px;
   box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.527);
   margin: 10px;
+  position: relative;
+}
+
+.tarjeta-proyecto .ver-mas {
+  color: blue;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-weight: 500;
+  size: 63px;
 }
 
 .tarjeta-proyecto img {
@@ -523,5 +534,623 @@ a {
   .tarjeta-habilidad img {
     width: 60px;
     height: 60px;
+  }
+}
+
+/* Estilos mejorados para tarjetas de proyectos */
+.contenedor-proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 3rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tarjeta-proyecto {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.tarjeta-proyecto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-proyecto a {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tarjeta-proyecto img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-proyecto a:hover img {
+  transform: scale(1.05);
+}
+
+.tarjeta-proyecto h3 {
+  color: #395144;
+  font-size: 1.5rem;
+  margin: 1.5rem 1.5rem 0.5rem 1.5rem;
+  font-weight: 600;
+}
+
+.tarjeta-proyecto p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0 1.5rem;
+  flex-grow: 1;
+}
+
+.tarjeta-proyecto .ver-mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #395144;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  margin-top: auto;
+  transition: gap 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.tarjeta-proyecto .ver-mas:hover {
+  gap: 0.8rem;
+  color: coral;
+}
+
+/* GitHub cards específicas */
+.tarjeta-proyecto .github {
+  height: auto;
+  margin: 1rem;
+  object-fit: contain;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+  .contenedor-proyectos {
+    grid-template-columns: 1fr;
+    padding: 2rem 5%;
+    gap: 1.5rem;
+  }
+
+  .tarjeta-proyecto img {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .contenedor-proyectos {
+    padding: 1.5rem 3%;
+  }
+
+  .tarjeta-proyecto h3 {
+    font-size: 1.3rem;
+    margin: 1rem 1rem 0.5rem 1rem;
+  }
+
+  .tarjeta-proyecto p {
+    margin: 0 1rem;
+    font-size: 0.95rem;
+  }
+
+  .tarjeta-proyecto .ver-mas {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tarjeta-proyecto img {
+    height: 180px;
+  }
+}
+
+/* Estilos mejorados para tarjetas de proyectos */
+.contenedor-proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 3rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tarjeta-proyecto {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: auto;
+  min-height: 450px;
+  width: 100%;
+  position: relative;
+}
+
+.tarjeta-proyecto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-proyecto a {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tarjeta-proyecto img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-proyecto a:hover img {
+  transform: scale(1.05);
+}
+
+.tarjeta-proyecto h3 {
+  color: #395144;
+  font-size: 1.5rem;
+  margin: 1.5rem 1.5rem 0.5rem 1.5rem;
+  font-weight: 600;
+}
+
+.tarjeta-proyecto p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0 1.5rem;
+  flex-grow: 1;
+}
+
+.tarjeta-proyecto .ver-mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #395144;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  margin-top: auto;
+  transition: gap 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  position: static;
+  bottom: auto;
+  right: auto;
+}
+
+.tarjeta-proyecto .ver-mas:hover {
+  gap: 0.8rem;
+  color: coral;
+}
+
+/* GitHub cards específicas */
+.tarjeta-proyecto .github {
+  height: auto;
+  margin: 1rem;
+  object-fit: contain;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+  .contenedor-proyectos {
+    grid-template-columns: 1fr;
+    padding: 2rem 5%;
+    gap: 1.5rem;
+  }
+
+  .tarjeta-proyecto img {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .contenedor-proyectos {
+    padding: 1.5rem 3%;
+  }
+
+  .tarjeta-proyecto h3 {
+    font-size: 1.3rem;
+    margin: 1rem 1rem 0.5rem 1rem;
+  }
+
+  .tarjeta-proyecto p {
+    margin: 0 1rem;
+    font-size: 0.95rem;
+  }
+
+  .tarjeta-proyecto .ver-mas {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tarjeta-proyecto img {
+    height: 180px;
+  }
+}
+
+/* Estilos mejorados para tarjetas de proyectos */
+.contenedor-proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 3rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1100px) {
+  .contenedor-proyectos {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 4%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .contenedor-proyectos {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 5%;
+    padding-right: 15%;
+  }
+}
+
+.tarjeta-proyecto {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: auto;
+  min-height: 450px;
+  width: 100%;
+  position: relative;
+}
+
+.tarjeta-proyecto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-proyecto a {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tarjeta-proyecto img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-proyecto a:hover img {
+  transform: scale(1.05);
+}
+
+.tarjeta-proyecto h3 {
+  color: #395144;
+  font-size: 1.5rem;
+  margin: 1.5rem 1.5rem 0.5rem 1.5rem;
+  font-weight: 600;
+}
+
+.tarjeta-proyecto p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0 1.5rem;
+  flex-grow: 1;
+}
+
+.tarjeta-proyecto .ver-mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #395144;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  margin-top: auto;
+  transition: gap 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  position: static;
+  bottom: auto;
+  right: auto;
+}
+
+.tarjeta-proyecto .ver-mas:hover {
+  gap: 0.8rem;
+  color: coral;
+}
+
+/* GitHub cards específicas */
+.tarjeta-proyecto .github {
+  height: auto;
+  margin: 1rem;
+  object-fit: contain;
+}
+
+/* Responsive */
+@media only screen and (max-width: 1100px) {
+  .tarjeta-proyecto img {
+    height: 200px;
+  }
+
+  .tarjeta-proyecto {
+    min-height: 420px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .tarjeta-proyecto img {
+    height: 220px;
+  }
+
+  .tarjeta-proyecto {
+    min-height: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .tarjeta-proyecto img {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .contenedor-proyectos {
+    padding: 1.5rem 3%;
+  }
+
+  .tarjeta-proyecto h3 {
+    font-size: 1.3rem;
+    margin: 1rem 1rem 0.5rem 1rem;
+  }
+
+  .tarjeta-proyecto p {
+    margin: 0 1rem;
+    font-size: 0.95rem;
+  }
+
+  .tarjeta-proyecto .ver-mas {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tarjeta-proyecto img {
+    height: 180px;
+  }
+}
+
+/* Estilos mejorados para tarjetas de proyectos */
+.contenedor-proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 3rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1100px) {
+  .contenedor-proyectos {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 4%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .contenedor-proyectos {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 5%;
+    padding-right: 15%;
+  }
+}
+
+.tarjeta-proyecto {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: auto;
+  min-height: 450px;
+  width: 100%;
+  position: relative;
+}
+
+.tarjeta-proyecto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-proyecto a {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tarjeta-proyecto img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-proyecto a:hover img {
+  transform: scale(1.05);
+}
+
+.tarjeta-proyecto h3 {
+  color: #395144;
+  font-size: 1.5rem;
+  margin: 1.5rem 1.5rem 0.5rem 1.5rem;
+  font-weight: 600;
+}
+
+.tarjeta-proyecto p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0 1.5rem;
+  flex-grow: 1;
+}
+
+.tarjeta-proyecto .ver-mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #395144;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  margin-top: auto;
+  transition: gap 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  position: static;
+  bottom: auto;
+  right: auto;
+}
+
+.tarjeta-proyecto .ver-mas:hover {
+  gap: 0.8rem;
+  color: coral;
+}
+
+/* GitHub cards específicas */
+.tarjeta-proyecto .github {
+  height: auto;
+  margin: 1rem;
+  object-fit: contain;
+}
+
+/* Estilos responsive para CV */
+@media only screen and (max-width: 1023px) {
+  .cv-container {
+    margin-top: 1.5rem;
+    padding: 1rem;
+  }
+
+  .cv-container iframe {
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cv-container {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-width: 1px;
+  }
+
+  .cv-container h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .cv-container iframe {
+    height: 350px;
+  }
+
+  .btn-download {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .cv-container {
+    padding: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .cv-container h3 {
+    font-size: 1rem;
+  }
+
+  .cv-container iframe {
+    height: 300px;
+  }
+
+  .btn-download {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Responsive */
+@media only screen and (max-width: 1100px) {
+  .tarjeta-proyecto img {
+    height: 200px;
+  }
+
+  .tarjeta-proyecto {
+    min-height: 420px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .tarjeta-proyecto img {
+    height: 220px;
+  }
+
+  .tarjeta-proyecto {
+    min-height: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .tarjeta-proyecto img {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .contenedor-proyectos {
+    padding: 1.5rem 3%;
+    justify-items: center;
+  }
+
+  .tarjeta-proyecto {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .tarjeta-proyecto h3 {
+    font-size: 1.3rem;
+    margin: 1rem 1rem 0.5rem 1rem;
+  }
+
+  .tarjeta-proyecto p {
+    margin: 0 1rem;
+    font-size: 0.95rem;
+  }
+
+  .tarjeta-proyecto .ver-mas {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tarjeta-proyecto img {
+    height: 180px;
   }
 }

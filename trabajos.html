@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Matcher Personalizado | Encuentra tu trabajo ideal</title>
+    <meta
+      name="description"
+      content="Aplicación web inteligente que analiza tu personalidad IPIP y encuentra trabajos perfectos para ti entre millones de ofertas. Desarrollado con React y Google Gemini 3.0."
+    />
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/696d650a89.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        overflow-x: hidden;
+      }
+
+      section {
+        background-color: white;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        height: 100vh;
+        color: white;
+        font-size: 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 1;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .hero > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero nav,
+      .hero-area,
+      .socials {
+        position: relative;
+        z-index: 2;
+      }
+
+      footer {
+        height: 500px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: white;
+        text-align: center;
+        padding: 80px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      ul {
+        display: flex;
+        list-style-type: none;
+        width: 750px;
+        justify-content: space-around;
+        font-size: 30px;
+      }
+
+      ul.mostrar {
+        display: block;
+      }
+
+      li {
+        text-decoration: none;
+      }
+
+      h1 {
+        font-size: 40px;
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .hero-text {
+        margin-left: 40px;
+        font-weight: 600;
+        margin-bottom: 300px;
+      }
+
+      .hero-area {
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .button {
+        width: 200px;
+        height: 55px;
+        border-radius: 40px;
+        text-align: center;
+        padding-top: 5px;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(245, 87, 108, 0.4);
+      }
+
+      .button:active {
+        transform: translateY(-1px);
+      }
+
+      .socials {
+        padding-bottom: 300px;
+      }
+
+      .social {
+        margin: 10px;
+      }
+
+      .sub-section-alternative {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 20px;
+      }
+
+      h2 {
+        font-size: 50px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .tarjeta-proyecto {
+        width: 400px;
+        height: 500px;
+        box-shadow: 5px 5px 20px rgba(102, 126, 234, 0.3);
+        margin: 10px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .tarjeta-proyecto:hover {
+        transform: translateY(-10px);
+      }
+
+      .tarjeta-proyecto img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .contenedor-proyectos {
+        display: flex;
+        justify-content: space-around;
+        padding: 80px;
+        flex-wrap: wrap;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .hamburger {
+        display: none;
+      }
+
+      .hamburger:focus {
+        outline: 0;
+      }
+
+      /* Animación */
+      :root {
+        --bg-color: #667eea;
+        --typewriterSpeed: 2s;
+        --typewriterCharacters: 24;
+      }
+
+      .animacion h1 {
+        font-size: clamp(1rem, 3vw + 1rem, 4rem);
+        position: relative;
+        font-family: "Poppins", sans-serif;
+        width: max-content;
+      }
+
+      .animacion h1::before,
+      .animacion h1::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      .animacion h1::before {
+        background: var(--bg-color);
+        animation: typewriter var(--typewriterSpeed)
+          steps(var(--typewriterCharacters)) 1s forwards;
+      }
+
+      .animacion h1::after {
+        width: 0.125em;
+        background: white;
+        animation: typewriter var(--typewriterSpeed)
+            steps(var(--typewriterCharacters)) 1s forwards,
+          blink 750ms steps(var(--typewriterCharacters)) infinite;
+      }
+
+      .animacion .subtitle {
+        color: rgb(255, 255, 255);
+        font-size: 2rem;
+        font-weight: 400;
+        opacity: 0;
+        transform: translateY(3rem);
+        animation: fadeInUp 1s ease calc(var(--typewriterSpeed) + 1s) forwards;
+      }
+
+      @keyframes typewriter {
+        to {
+          left: 100%;
+        }
+      }
+
+      @keyframes blink {
+        to {
+          background: transparent;
+        }
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ESTILOS PARA EXPERIENCIA */
+      .contenedor-experiencia {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .tarjeta-experiencia {
+        background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+        border-radius: 15px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        border-left: 4px solid #667eea;
+        box-shadow: 0 2px 10px rgba(102, 126, 234, 0.15);
+      }
+
+      .experiencia-header {
+        margin-bottom: 1rem;
+      }
+
+      .experiencia-header h3 {
+        color: #667eea;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .empresa {
+        color: #f5576c;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .tecnologias-usadas {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #d0d7de;
+      }
+
+      .tecnologias-usadas p {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* ESTILOS PARA CARACTERÍSTICAS */
+      .contenedor-caracteristicas {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .tarjeta-caracteristica {
+        background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(102, 126, 234, 0.1);
+      }
+
+      .tarjeta-caracteristica:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.25);
+      }
+
+      .tarjeta-caracteristica h4 {
+        color: #667eea;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .tarjeta-caracteristica p {
+        color: #555;
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      .icono-caracteristica {
+        font-size: 2.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+
+      /* FLUJO DE TRABAJO */
+      .contenedor-flujo {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .paso-flujo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
+        gap: 2rem;
+      }
+
+      .paso-flujo:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .numero-paso {
+        min-width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .contenido-paso {
+        flex: 1;
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        border-left: 4px solid #f5576c;
+      }
+
+      .contenido-paso h4 {
+        color: #667eea;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .contenido-paso p {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* ESTADÍSTICAS */
+      .contenedor-estadisticas {
+        max-width: 1000px;
+        margin: 60px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+
+      .stat-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      /* RESPONSIVE */
+      @media only screen and (max-width: 1000px) {
+        .contenedor-proyectos {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .tarjeta-proyecto {
+          margin: 30px;
+        }
+
+        .hamburger {
+          display: block;
+          border: 0;
+          background-color: transparent;
+          color: white;
+          font-size: 30px;
+          margin: 20px;
+          align-self: flex-end;
+        }
+
+        ul {
+          display: none;
+          background-color: #5568d3;
+        }
+
+        nav {
+          display: flex;
+          flex-direction: column-reverse;
+          background-color: #5568d3;
+        }
+
+        .tarjeta-experiencia {
+          padding: 1.5rem;
+        }
+
+        .experiencia-header h3 {
+          font-size: 1.5rem;
+        }
+
+        .contenedor-caracteristicas {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .paso-flujo,
+        .paso-flujo:nth-child(even) {
+          flex-direction: column;
+        }
+
+        .numero-paso {
+          min-width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+        }
+
+        .contenedor-estadisticas {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+      }
+
+      @media only screen and (max-width: 500px) {
+        footer h2 {
+          font-size: 24px;
+        }
+
+        .subtitle p {
+          font-size: 18px;
+        }
+
+        .button {
+          width: 120px;
+          height: 55px;
+          padding-top: 0px;
+        }
+
+        .button a {
+          font-size: 20px;
+          margin: 0;
+        }
+
+        .hero-text {
+          margin-left: 25px;
+        }
+
+        .tarjeta-experiencia {
+          padding: 1rem;
+        }
+
+        .contenedor-caracteristicas {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          padding: 20px 10px;
+        }
+
+        .tarjeta-caracteristica {
+          padding: 1.5rem;
+        }
+
+        .tarjeta-proyecto {
+          width: 90%;
+          height: auto;
+          min-height: 400px;
+        }
+
+        .contenido-paso {
+          padding: 1.5rem;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+        }
+
+        .stat-label {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <nav>
+        <div></div>
+        <ul>
+          <li><a href="./index.html">Inicio</a></li>
+          <li><a href="#descripcion">Descripción</a></li>
+          <li><a href="#caracteristicas">Características</a></li>
+          <li><a href="#flujo">Cómo funciona</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+
+      <div class="hero-area">
+        <div class="hero-text animacion">
+          <h1>Job Matcher IPIP</h1>
+          <div class="subtitle">
+            <p>Analisis de personalidad para encontrar trabajo ideal</p>
+            <div class="button">
+              <a href="#descripcion">Descubrir</a>
+            </div>
+          </div>
+        </div>
+        <div class="socials">
+          <a
+            href="https://github.com/tu-usuario/job-matcher-ipip"
+            class="social"
+            target="_blank"
+          >
+            <i class="fab fa-github" style="font-size: 50px; color: white"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="demo"
+      class="sub-section-alternative"
+      style="background-color: #f9f9f9"
+    >
+      <h2>Video Demostrativo</h2>
+      <div style="max-width: 1400px; margin: 40px auto; padding: 20px">
+        <div
+          style="
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background-color: #000;
+          "
+        >
+          <iframe
+            src="https://www.youtube.com/embed/deksNaWS5jM?rel=0"
+            title="Job matcher"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border: none;
+            "
+          >
+          </iframe>
+        </div>
+        <p
+          style="
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+          "
+        >
+          Si el video no se muestra,
+          <a
+            href="https://www.youtube.com/watch?v=deksNaWS5jM"
+            target="_blank"
+            style="color: coral; text-decoration: underline"
+            >haz clic aquí para verlo en YouTube</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <!-- ESTADÍSTICAS IMPACTANTES -->
+    <section style="background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%); padding: 60px 20px;">
+      <div class="contenedor-estadisticas">
+        <div class="stat-card">
+          <div class="stat-number">1M+</div>
+          <div class="stat-label">Ofertas laborales</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Match personalizado</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">IPIP</div>
+          <div class="stat-label">Test científico</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">AI</div>
+          <div class="stat-label">Análisis inteligente</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESCRIPCIÓN -->
+    <section id="descripcion" class="sub-section-alternative">
+      <h2>Sobre el Proyecto</h2>
+      <div class="contenedor-experiencia">
+        <div class="tarjeta-experiencia">
+          <div class="experiencia-header">
+            <h3>Job Matcher: Encuentra tu trabajo ideal basado en tu personalidad</h3>
+            <div class="empresa">React + Google Gemini 3.0 + Big Data</div>
+          </div>
+
+          <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #444">
+            Una aplicación web innovadora que combina psicología de la personalidad con inteligencia artificial para encontrar trabajos perfectamente alineados con tu perfil. Utilizando el test de personalidad IPIP, la aplicación analiza más de 1 millón de ofertas laborales internacionales de Indeed y te recomienda las más adecuadas con explicaciones detalladas del porqué.
+          </p>
+
+          <div class="tecnologias-usadas">
+            <p><strong>Tecnologías utilizadas:</strong></p>
+            <p>
+              React.js • Google Gemini 3.0 API • CSV Processing • IPIP Personality Test • JavaScript • HTML5 • CSS3 • Big Data Analytics • REST APIs
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS PRINCIPALES -->
+    <section
+      id="caracteristicas"
+      class="sub-section-alternative"
+      style="background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%)"
+    >
+      <h2>Características Principales</h2>
+      <div class="contenedor-caracteristicas">
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h4>Test de Personalidad IPIP</h4>
+          <p>
+            Evaluación psicológica científicamente validada que mide los cinco grandes rasgos de personalidad para un perfil preciso y profundo.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-database"></i>
+          </div>
+          <h4>Procesamiento de Big Data</h4>
+          <p>
+            Análisis inteligente de más de 1 millón de líneas de ofertas laborales internacionales de Indeed mediante procesamiento optimizado de CSV.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h4>IA con Google Gemini 3.0</h4>
+          <p>
+            Análisis avanzado mediante inteligencia artificial que correlaciona tu personalidad con características específicas de cada puesto laboral.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-filter"></i>
+          </div>
+          <h4>Filtrado Inteligente</h4>
+          <p>
+            Algoritmo que pre-selecciona las ofertas más relevantes antes del análisis de IA, optimizando tiempo y precisión de resultados.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <h4>Resultados Ordenados por Match</h4>
+          <p>
+            Presentación de trabajos clasificados por porcentaje de compatibilidad, con explicaciones detalladas de por qué son ideales para ti.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h4>Insights Personalizados</h4>
+          <p>
+            Cada recomendación incluye una explicación única de cómo tus rasgos de personalidad se alinean con los requisitos del trabajo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLUJO DE TRABAJO -->
+    <section id="flujo" class="sub-section-alternative">
+      <h2>¿Cómo funciona?</h2>
+      <div class="contenedor-flujo">
+        <div class="paso-flujo">
+          <div class="numero-paso">1</div>
+          <div class="contenido-paso">
+            <h4>Completa el Test IPIP</h4>
+            <p>
+              Responde un cuestionario científicamente validado que evalúa tus cinco grandes rasgos de personalidad: apertura, responsabilidad, extraversión, amabilidad y neuroticismo.
+            </p>
+          </div>
+        </div>
+
+        <div class="paso-flujo">
+          <div class="numero-paso">2</div>
+          <div class="contenido-paso">
+            <h4>Cálculo de tu Perfil</h4>
+            <p>
+              La aplicación procesa tus respuestas y genera un perfil completo de personalidad con puntuaciones detalladas en cada dimensión psicológica.
+            </p>
+          </div>
+        </div>
+
+        <div class="paso-flujo">
+          <div class="numero-paso">3</div>
+          <div class="contenido-paso">
+            <h4>Búsqueda en Big Data</h4>
+            <p>
+              El sistema busca entre más de 1 millón de líneas de ofertas laborales internacionales en Indeed, filtrando las más relevantes según tu perfil.
+            </p>
+          </div>
+        </div>
+
+        <div class="paso-flujo">
+          <div class="numero-paso">4</div>
+          <div class="contenido-paso">
+            <h4>Análisis con Gemini 3.0</h4>
+            <p>
+              Las ofertas preseleccionadas se envían a Google Gemini 3.0, que analiza profundamente la compatibilidad entre tu personalidad y cada puesto.
+            </p>
+          </div>
+        </div>
+
+        <div class="paso-flujo">
+          <div class="numero-paso">5</div>
+          <div class="contenido-paso">
+            <h4>Generación de Matches</h4>
+            <p>
+              La IA identifica los trabajos que mejor se acoplan a tu personalidad, calculando un porcentaje de compatibilidad para cada uno.
+            </p>
+          </div>
+        </div>
+
+        <div class="paso-flujo">
+          <div class="numero-paso">6</div>
+          <div class="contenido-paso">
+            <h4>Resultados Personalizados</h4>
+            <p>
+              Recibes una lista ordenada de trabajos ideales con porcentajes de match y explicaciones detalladas de por qué cada uno es perfecto para ti.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPTURAS -->
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+      <h2 id="hContactar">Contáctame</h2>
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#ffffff"
+          width="24"
+          height="24"
+          viewBox="1 -4 24 24"
+        >
+          <path
+            d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"
+          />
+        </svg>
+        josue.espinoza.gtr@gmail.com
+      </p>
+
+      <p>
+        <svg
+          fill="#ffffff"
+          width="24"
+          height="24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+        >
+          <path
+            d="M16 22.621l-3.521-6.795c-.007.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.082-1.026-3.492-6.817-2.106 1.039c-1.639.855-2.313 2.666-2.289 4.916.075 6.948 6.809 18.071 12.309 18.045.541-.003 1.07-.113 1.58-.346.121-.055 2.102-1.029 2.11-1.033zm-2.5-13.621c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm9 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm-4.5 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5z"
+          /></svg
+        >+52 (867)193-7816
+      </p>
+    </footer>
+
+    <!-- Script para menú hamburguesa -->
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navUL = document.querySelector("nav ul");
+
+      if (hamburger) {
+        hamburger.addEventListener("click", () => {
+          navUL.classList.toggle("mostrar");

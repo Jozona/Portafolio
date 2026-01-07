@@ -1,0 +1,741 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+section {
+  background-color: white;
+}
+
+.hero {
+  background-color: #395144;
+  height: 100vh;
+  color: white;
+  font-size: 40px;
+}
+
+footer {
+  height: 500px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 80px;
+}
+
+@media only screen and (max-width: 500px) {
+  footer h2 {
+    font-size: 24px;
+  }
+  .subtitle p {
+    font-size: 18px;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  width: 750px;
+  justify-content: space-around;
+  font-size: 30px;
+}
+
+ul.mostrar {
+  display: block;
+}
+
+li {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.hero-text {
+  margin-left: 40px;
+  font-weight: 600;
+  margin-bottom: 300px;
+}
+
+.hero-area {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  width: 200px;
+  height: 55px;
+  border-radius: 40px;
+  text-align: center;
+  padding-top: 5px;
+  background-color: coral;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+  .button {
+    width: 120px;
+    height: 55px;
+    border-radius: 40px;
+    text-align: center;
+    padding-top: 0px;
+    background-color: coral;
+    cursor: pointer;
+  }
+
+  .button a {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .hero-text {
+    margin-left: 25px;
+  }
+}
+
+.button:hover {
+  background-color: #ef744b;
+}
+
+.button:active {
+  background-color: gray;
+  color: #808080;
+}
+
+.socials {
+  padding-bottom: 300px;
+}
+
+.social {
+  margin: 10px;
+}
+
+.idioma {
+  margin-top: 40px;
+}
+
+.sub-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 20px;
+}
+
+.sub-section-alternative {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0px 20px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+.headshot {
+  width: 400px;
+  border-radius: 20px;
+  padding-top: 50px;
+}
+
+.tarjeta-proyecto {
+  width: 400px;
+  height: 450px;
+  box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.527);
+  margin: 10px;
+  position: relative;
+}
+
+.tarjeta-proyecto .ver-mas {
+  color: blue;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.tarjeta-proyecto img {
+  width: 99%;
+}
+
+.github {
+  width: 97%;
+}
+
+.contenedor-proyectos {
+  display: flex;
+  justify-content: space-around;
+  padding: 80px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .contenedor-proyectos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tarjeta-proyecto {
+    margin: 30px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Hamburguesa */
+.hamburger {
+  display: none;
+}
+
+.hamburger:focus {
+  outline: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  .hamburger {
+    display: block;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    font-size: 30px;
+    margin: 20px;
+    align-self: flex-end;
+  }
+
+  ul {
+    display: none;
+    background-color: #4e6c50;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #4e6c50;
+  }
+}
+
+/* Animacion */
+
+:root {
+  --bg-color: #395144;
+  --typewriterSpeed: 2s;
+  --typewriterCharacters: 24;
+}
+
+.animacion body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: var(--bg-color);
+}
+
+.animacion h1 {
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  width: max-content;
+}
+
+.animacion h1::before,
+.animacion h1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.animacion h1::before {
+  background: var(--bg-color);
+  animation: typewriter var(--typewriterSpeed)
+    steps(var(--typewriterCharacters)) 1s forwards;
+}
+
+.animacion h1::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter var(--typewriterSpeed)
+      steps(var(--typewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--typewriterCharacters)) infinite;
+}
+
+.animacion .subtitle {
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInUp 1s ease calc(var(--typewriterSpeed) + 1s) forwards;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== NUEVOS ESTILOS PARA EXPERIENCIA ========== */
+.contenedor-experiencia {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.tarjeta-experiencia {
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid #395144;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.experiencia-header {
+  margin-bottom: 1rem;
+}
+
+.experiencia-header h3 {
+  color: #395144;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.empresa {
+  color: coral;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.periodo {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.logros h4 {
+  color: #395144;
+  font-size: 1.2rem;
+  margin: 1.5rem 0 1rem 0;
+  font-weight: 600;
+}
+
+.logros ul {
+  list-style: none;
+  padding: 0;
+}
+
+.logros li {
+  color: #333;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.logros li:before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: coral;
+  font-size: 1.2rem;
+}
+
+.logros strong {
+  color: #395144;
+}
+
+.tecnologias-usadas {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ddd;
+}
+
+.tecnologias-usadas p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ========== ESTILOS PARA EDUCACIÓN ========== */
+.contenedor-educacion {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 20px;
+}
+
+.tarjeta-educacion {
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 2rem;
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta-educacion:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-educacion h3 {
+  color: #395144;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.facultad,
+.carrera,
+.ubicacion {
+  color: #555;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.nivel-ingles {
+  color: coral;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.descripcion-ingles {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* ========== ESTILOS PARA HABILIDADES ========== */
+.contenedor-habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.tarjeta-habilidad {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 150px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta-habilidad:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta-habilidad img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-habilidad p {
+  color: #395144;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ========== RESPONSIVE ========== */
+@media only screen and (max-width: 1000px) {
+  .tarjeta-experiencia {
+    padding: 1.5rem;
+  }
+
+  .experiencia-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .contenedor-educacion {
+    flex-direction: column;
+  }
+
+  .tarjeta-educacion {
+    min-width: 100%;
+  }
+
+  .contenedor-habilidades {
+    gap: 1rem;
+  }
+
+  .tarjeta-habilidad {
+    width: 120px;
+    padding: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .contenedor-experiencia,
+  .contenedor-educacion,
+  .contenedor-habilidades {
+    padding: 10px;
+  }
+
+  .tarjeta-experiencia {
+    padding: 1rem;
+  }
+
+  .logros li {
+    font-size: 0.9rem;
+  }
+
+  .tarjeta-habilidad {
+    width: 100px;
+    padding: 1rem;
+  }
+
+  .tarjeta-habilidad img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Agrega esto a tu archivo style.css */
+
+.hero {
+  position: relative;
+  /* Asegúrate de que la sección tenga position relative */
+  overflow: hidden;
+}
+
+/* Pseudo-elemento para el GIF de fondo */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./imagenes/chatbot.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15; /* Ajusta este valor entre 0 y 1 para la opacidad deseada */
+  z-index: 0;
+  pointer-events: none; /* Evita que interfiera con los clics */
+}
+
+/* Asegura que el contenido esté por encima del fondo */
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero nav,
+.hero-area,
+.socials {
+  position: relative;
+  z-index: 2;
+}
+.contenedor-experiencia {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.tarjeta-experiencia {
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid #395144;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.experiencia-header {
+  margin-bottom: 1rem;
+}
+
+.experiencia-header h3 {
+  color: #395144;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.empresa {
+  color: coral;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.tecnologias-usadas {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ddd;
+}
+
+.tecnologias-usadas p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* NUEVOS ESTILOS PARA CARACTERÍSTICAS */
+.contenedor-caracteristicas {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.tarjeta-caracteristica {
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-caracteristica:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-caracteristica h4 {
+  color: #395144;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.tarjeta-caracteristica p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.icono-caracteristica {
+  font-size: 2.5rem;
+  color: coral;
+  margin-bottom: 1rem;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width: 1000px) {
+  .contenedor-proyectos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tarjeta-proyecto {
+    margin: 30px;
+  }
+
+  .hamburger {
+    display: block;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    font-size: 30px;
+    margin: 20px;
+    align-self: flex-end;
+  }
+
+  ul {
+    display: none;
+    background-color: #4e6c50;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #4e6c50;
+  }
+
+  .tarjeta-experiencia {
+    padding: 1.5rem;
+  }
+
+  .experiencia-header h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  footer h2 {
+    font-size: 24px;
+  }
+
+  .subtitle p {
+    font-size: 18px;
+  }
+
+  .button {
+    width: 120px;
+    height: 55px;
+    padding-top: 0px;
+  }
+
+  .button a {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .hero-text {
+    margin-left: 25px;
+  }
+
+  .tarjeta-experiencia {
+    padding: 1rem;
+  }
+
+  .contenedor-caracteristicas {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+.tarjeta-proyecto {
+  width: 400px;
+  height: max-content;
+  box-shadow: 5px 5px 20px rgba(128, 128, 128, 0.527);
+  margin: 10px;
+  position: relative;
+}
