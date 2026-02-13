@@ -1,167 +1,797 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
   <head>
-    <link rel="stylesheet" href="./src/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,500&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-    <div class="elfsight-app-dc4a6d0e-6a07-4558-a18c-3fb1a2b9648f"></div>
-    <script
-      src="https://kit.fontawesome.com/696d650a89.js"
-      crossorigin="anonymous"
-    ></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portafolio</title>
+    <title>Josué Espinoza - Diseñador UI/UX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
     <style>
-      /* Estilos adicionales para el layout lado a lado */
-      .combined-section {
+      :root {
+        --color-bg: #0a0e14;
+        --color-surface: #151a23;
+        --color-surface-light: #1e2530;
+        --color-primary: #00e5a0;
+        --color-primary-dim: #00b380;
+        --color-accent: #ff6b9d;
+        --color-text: #e6edf3;
+        --color-text-dim: #8b949e;
+        --color-border: #30363d;
+        --font-display: "Space Grotesk", sans-serif;
+        --font-body: "Space Grotesk", sans-serif;
+        --font-serif: "Newsreader", serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Animated Background */
+      .bg-gradient {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.4;
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(0, 229, 160, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 107, 157, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 90%,
+            rgba(0, 229, 160, 0.1) 0%,
+            transparent 40%
+          );
+        animation: gradient-shift 15s ease infinite;
+      }
+
+      @keyframes gradient-shift {
+        0%,
+        100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.5rem 5%;
+        background: rgba(10, 14, 20, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--color-border);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled {
+        padding: 1rem 5%;
+        background: rgba(10, 14, 20, 0.95);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+      }
+
+      nav ul li a {
+        color: var(--color-text-dim);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-primary);
+        transition: width 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: var(--color-primary);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
-        padding: 3rem 5%;
+        justify-content: center;
+        align-items: center;
+        padding: 8rem 5% 5rem;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 900px;
+        text-align: center;
+        animation: fadeInUp 1s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-label {
+        display: inline-block;
+        padding: 0.5rem 1.2rem;
+        background: rgba(0, 229, 160, 0.1);
+        border: 1px solid rgba(0, 229, 160, 0.3);
+        border-radius: 50px;
+        color: var(--color-primary);
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s ease 0.2s backwards;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--color-text) 0%,
+          var(--color-primary) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInUp 1s ease 0.4s backwards;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        color: var(--color-text-dim);
+        font-family: var(--font-serif);
+        font-style: italic;
+        margin-bottom: 2.5rem;
+        animation: fadeInUp 1s ease 0.6s backwards;
+      }
+
+      .hero-description {
+        font-size: 1.1rem;
+        color: var(--color-text-dim);
+        line-height: 1.8;
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        animation: fadeInUp 1s ease 0.8s backwards;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 1s ease 1s backwards;
+      }
+
+      .btn {
+        padding: 1rem 2.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: var(--color-primary);
+        color: var(--color-bg);
+        border: 2px solid var(--color-primary);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--color-primary);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 229, 160, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--color-text);
+        border: 2px solid var(--color-border);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+        transform: translateY(-2px);
+      }
+
+      .social-links {
+        margin-top: 3rem;
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        animation: fadeInUp 1s ease 1.2s backwards;
+      }
+
+      .social-link {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 50%;
+        color: var(--color-text);
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-bg);
+        transform: translateY(-3px);
+      }
+
+      .social-link svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Section Styles */
+      section {
+        padding: 6rem 5%;
         max-width: 1400px;
         margin: 0 auto;
       }
 
-      @media (min-width: 1024px) {
-        .combined-section {
-          flex-direction: row;
-          align-items: flex-start;
-          gap: 3rem;
-        }
-
-        .combined-section > section {
-          flex: 1;
-          margin: 0 !important;
-          padding: 2rem !important;
-        }
-
-        #sobre-mi {
-          max-width: 45%;
-        }
-
-        #habilidades {
-          max-width: 55%;
-        }
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
       }
 
-      @media (max-width: 1023px) {
-        .combined-section > section {
-        }
-      }
-
-      /* Estilos para el visor de CV */
-      .cv-container {
-        margin-top: 2rem;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 1.5rem;
-        background-color: #f9f9f9;
-      }
-
-      .cv-container h3 {
-        margin-top: 0;
+      .section-label {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        background: rgba(0, 229, 160, 0.1);
+        border: 1px solid rgba(0, 229, 160, 0.3);
+        border-radius: 50px;
+        color: var(--color-primary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
         margin-bottom: 1rem;
-        color: #333;
-        font-size: 1.3rem;
       }
 
-      .cv-container iframe {
+      .section-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--color-text) 0%,
+          var(--color-primary) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-description {
+        font-size: 1.2rem;
+        color: var(--color-text-dim);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: var(--color-text-dim);
+      }
+
+      .about-text p {
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text strong {
+        color: var(--color-primary);
+        font-weight: 600;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .stat-card {
+        background: var(--color-surface);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid var(--color-border);
+        transition: all 0.3s ease;
+      }
+
+      .stat-card:hover {
+        border-color: var(--color-primary);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 229, 160, 0.1);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        color: var(--color-text-dim);
+        font-size: 0.9rem;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .skill-category {
+        background: var(--color-surface);
+        padding: 2.5rem;
+        border-radius: 16px;
+        border: 1px solid var(--color-border);
+        transition: all 0.3s ease;
+      }
+
+      .skill-category:hover {
+        border-color: var(--color-primary);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 229, 160, 0.1);
+      }
+
+      .skill-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 229, 160, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .skill-icon svg {
+        width: 30px;
+        height: 30px;
+        fill: var(--color-primary);
+      }
+
+      .skill-category h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--color-text);
+      }
+
+      .skill-list {
+        list-style: none;
+      }
+
+      .skill-list li {
+        padding: 0.6rem 0;
+        color: var(--color-text-dim);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .skill-list li::before {
+        content: "→";
+        color: var(--color-primary);
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .project-card {
+        background: var(--color-surface);
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--color-border);
+        transition: all 0.4s ease;
+        position: relative;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--color-primary);
+        box-shadow: 0 20px 50px rgba(0, 229, 160, 0.15);
+      }
+
+      .project-image {
         width: 100%;
-        height: 500px;
-        border: none;
-        border-radius: 4px;
-        background-color: white;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+        background: var(--color-surface-light);
       }
 
-      .btn-download {
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.05);
+      }
+
+      .project-tag {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.4rem 1rem;
+        background: rgba(0, 229, 160, 0.9);
+        color: var(--color-bg);
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .project-content {
+        padding: 2rem;
+      }
+
+      .project-content h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        color: var(--color-text);
+      }
+
+      .project-content p {
+        color: var(--color-text-dim);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .tech-tag {
+        padding: 0.3rem 0.8rem;
+        background: rgba(0, 229, 160, 0.1);
+        border: 1px solid rgba(0, 229, 160, 0.3);
+        border-radius: 50px;
+        font-size: 0.8rem;
+        color: var(--color-primary);
+      }
+
+      .project-link {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        margin-top: 1rem;
-        padding: 0.75rem 1.5rem;
-        background-color: #4e6c50;
-        color: white;
+        color: var(--color-primary);
+        font-weight: 600;
         text-decoration: none;
-        border-radius: 5px;
-        font-weight: 500;
-        transition: background-color 0.3s ease;
+        transition: gap 0.3s ease;
       }
 
-      .btn-download:hover {
-        background-color: #3a503c;
+      .project-link:hover {
+        gap: 1rem;
       }
 
-      .btn-download svg {
-        width: 18px;
-        height: 18px;
+      /* CV Section */
+      .cv-section {
+        background: var(--color-surface);
+        border-radius: 20px;
+        padding: 3rem;
+        border: 1px solid var(--color-border);
+        margin-top: 3rem;
       }
 
+      .cv-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .cv-header h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .cv-viewer {
+        width: 100%;
+        height: 600px;
+        border: 2px solid var(--color-border);
+        border-radius: 12px;
+        background: white;
+        margin-bottom: 1.5rem;
+      }
+
+      .cv-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 1rem 2rem;
+        background: var(--color-primary);
+        color: var(--color-bg);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .cv-download:hover {
+        background: var(--color-primary-dim);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 229, 160, 0.3);
+      }
+
+      /* Contact Section */
+      .contact-content {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .contact-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 2rem;
+        background: var(--color-surface);
+        border-radius: 12px;
+        border: 1px solid var(--color-border);
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover {
+        border-color: var(--color-primary);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 229, 160, 0.1);
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 229, 160, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .contact-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: var(--color-primary);
+      }
+
+      .contact-info {
+        text-align: left;
+      }
+
+      .contact-label {
+        font-size: 0.85rem;
+        color: var(--color-text-dim);
+        margin-bottom: 0.3rem;
+      }
+
+      .contact-value {
+        font-size: 1.1rem;
+        color: var(--color-text);
+        font-weight: 600;
+      }
+
+      /* Footer */
+      footer {
+        padding: 3rem 5%;
+        text-align: center;
+        border-top: 1px solid var(--color-border);
+        color: var(--color-text-dim);
+      }
+
+      /* Responsive */
       @media (max-width: 768px) {
-        .cv-container iframe {
-          height: 400px;
+        nav ul {
+          gap: 1.5rem;
         }
+
+        .hero {
+          padding: 6rem 5% 3rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
     </style>
   </head>
 
   <body>
-    <section class="hero">
-      <nav>
-        <div></div>
-        <ul id="navegacion">
-          <li><a id="liSobreMi" href="#sobre-mi">Sobre mi</a></li>
-          <li><a id="liProyectos" href="#proyectos">Proyectos</a></li>
-          <li><a id="liContacto" href="#contacto">Contacto</a></li>
-          <li>
+    <div class="elfsight-app-dc4a6d0e-6a07-4558-a18c-3fb1a2b9648f"></div>
+    <div class="bg-gradient"></div>
+
+    <!-- Navigation -->
+    <nav id="nav">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre Mí</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <span class="hero-label">Diseñador UI/UX</span>
+        <h1>Josué Espinoza</h1>
+        <p class="hero-subtitle">
+          Creando experiencias digitales que conectan con las personas
+        </p>
+        <p class="hero-description">
+          Diseñador UI/UX enfocado en crear interfaces intuitivas y
+          estéticamente impactantes. Combino pensamiento de diseño con
+          desarrollo frontend para transformar ideas complejas en experiencias
+          de usuario.
+        </p>
+        <div class="cta-buttons">
+          <a href="#proyectos" class="btn btn-primary">
+            Ver Proyectos
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#ffffff"
-              width="28"
-              height="28"
-              viewBox="0 -4 28 28"
-            >
-              <path
-                d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm10 12c0 .685-.07 1.354-.202 2h-3.853c.121-1.283.129-2.621 0-4h3.853c.132.646.202 1.315.202 2zm-.841-4h-3.5c-.383-1.96-1.052-3.751-1.948-5.278 2.435.977 4.397 2.882 5.448 5.278zm-5.554 0h-2.605v-5.658c1.215 1.46 2.117 3.41 2.605 5.658zm-4.605-5.658v5.658h-2.605c.488-2.248 1.39-4.198 2.605-5.658zm0 7.658v4h-2.93c-.146-1.421-.146-2.577 0-4h2.93zm0 6v5.658c-1.215-1.46-2.117-3.41-2.605-5.658h2.605zm2 5.658v-5.658h2.605c-.488 2.248-1.39 4.198-2.605 5.658zm0-7.658v-4h2.93c.146 1.421.146 2.577 0 4h-2.93zm-4.711-11.278c-.896 1.527-1.565 3.318-1.948 5.278h-3.5c1.051-2.396 3.013-4.301 5.448-5.278zm-6.087 7.278h3.853c-.121 1.283-.129 2.621 0 4h-3.853c-.132-.646-.202-1.315-.202-2s.07-1.354.202-2zm.639 6h3.5c.383 1.96 1.052 3.751 1.948 5.278-2.435-.977-4.397-2.882-5.448-5.278zm12.87 5.278c.896-1.527 1.565-3.318 1.948-5.278h3.5c-1.051 2.396-3.013 4.301-5.448 5.278z"
-              /></svg
-            ><a href="#en" onclick="reloadPage()" data-reload>English</a>/<a
-              href="."
-              >Español</a
-            >
-          </li>
-        </ul>
-        <button class="hamburger" id="hamburger">
-          <i class="fas fa-bars"></i>
-        </button>
-      </nav>
-      <div class="hero-area">
-        <div class="hero-text animacion">
-          <h1>Josué Espinoza</h1>
-          <div class="subtitle">
-            <p id="txtSubtitulo">Desarrollador</p>
-            <div class="button">
-              <a id="botonInfo" href="#sobre-mi">Sobre mi</a>
-            </div>
-          </div>
-        </div>
-        <div class="socials">
-          <a href="https://github.com/Jozona" class="social">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#ffffff"
-              width="50"
-              height="50"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
             >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#contacto" class="btn btn-secondary">Contactar</a>
+        </div>
+        <div class="social-links">
+          <a
+            href="https://github.com/Jozona"
+            class="social-link"
+            target="_blank"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+          </a>
+          <a href="mailto:josue.espinoza.gtr@gmail.com" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"
               />
             </svg>
           </a>
@@ -169,35 +799,163 @@
       </div>
     </section>
 
-    <!-- Contenedor combinado para Sobre mi y Habilidades -->
-    <div class="combined-section">
-      <section id="sobre-mi" class="sub-section">
-        <div class="information">
-          <h2 id="hSobreMi">Sobre mi</h2>
-          <p id="txtDescripcion">
-            Hola, mi nombre es Josué Emiliano Espinoza Gutiérrez. Soy un
-            desarrollador de software egresado de la Facultad de Ciencias
-            Físico-Matemáticas en la Universidad Autónoma de Nuevo León.
-            Actualmente me encuentro laborando como desarrollador de software en
-            Monterrey, Nuevo Leon. Estoy certificado internacionalmente por el
-            TOEFL iBT en el idioma ingles con un nivel avanzado de inglés (C1).
+    <!-- About Section -->
+    <section id="sobre-mi" class="fade-in">
+      <div class="section-header">
+        <span class="section-label">Conoce más</span>
+        <h2 class="section-title">Sobre Mí</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            ¡Hola! Soy <strong>Josué Emiliano Espinoza Gutiérrez</strong>, un
+            diseñador UI/UX apasionado por crear experiencias digitales que
+            realmente importan.
           </p>
+          <p>
+            Egresado de la
+            <strong>Facultad de Ciencias Físico-Matemáticas de la UANL</strong>,
+            combino mi formación técnica en desarrollo de software con una
+            sensibilidad especial para el diseño y la experiencia de usuario.
+          </p>
+          <p>
+            Con experiencia en <strong>desarrollo frontend</strong> y
+            conocimientos sólidos en tecnologías modernas, puedo llevar mis
+            diseños desde el concepto inicial hasta la implementación final,
+            asegurando que la visión creativa se traduzca fielmente en el
+            producto final.
+          </p>
+          <p>
+            Certificado internacionalmente por el <strong>TOEFL iBT</strong> con
+            nivel avanzado de inglés (C1), lo que me permite colaborar
+            efectivamente en equipos internacionales y mantenerme actualizado
+            con las últimas tendencias globales en UI/UX.
+          </p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Proyectos Completados</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">C1</div>
+            <div class="stat-label">Nivel de Inglés</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Años de Experiencia</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Enfoque en Usuario</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Visor de CV en PDF -->
-          <div class="cv-container">
-            <h3>Mi Currículum</h3>
-            <iframe
-              src="./src/imagenes/Espinoza_Gutierrez_Josue_Emiliano.pdf"
-              type="application/pdf"
-              title="Currículum Vitae"
-            ></iframe>
-            <a
-              href="./src/imagenes/Espinoza_Gutierrez_Josue_Emiliano.pdf"
-              download="CV_Josue_Espinoza.pdf"
-              class="btn-download"
-            >
+    <!-- Skills Section -->
+    <section id="habilidades" class="fade-in">
+      <div class="section-header">
+        <span class="section-label">Mi Expertise</span>
+        <h2 class="section-title">Habilidades</h2>
+        <p class="section-description">
+          Combino diseño, investigación y desarrollo para crear soluciones
+          completas centradas en el usuario
+        </p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              />
+            </svg>
+          </div>
+          <h3>Diseño UI/UX</h3>
+          <ul class="skill-list">
+            <li>Investigación de usuarios</li>
+            <li>Wireframing & Prototyping</li>
+            <li>Design Systems</li>
+            <li>Figma & Adobe XD</li>
+            <li>Diseño responsive</li>
+            <li>Accesibilidad (WCAG)</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 14l9-5-9-5-9 5 9 5z" />
+              <path
+                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+              />
+              <path
+                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+              />
+            </svg>
+          </div>
+          <h3>Frontend Development</h3>
+          <ul class="skill-list">
+            <li>HTML5 & CSS3</li>
+            <li>JavaScript (ES6+)</li>
+            <li>PHP</li>
+            <li>Bootstrap & Tailwind</li>
+            <li>APIs REST</li>
+            <li>Git & GitHub</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3>Herramientas & Plataformas</h3>
+          <ul class="skill-list">
+            <li>Microsoft Copilot Studio</li>
+            <li>Azure Cloud Services</li>
+            <li>SQL Server</li>
+            <li>Gemini AI</li>
+            <li>Power Platform</li>
+            <li>Gestión de proyectos</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyectos" class="fade-in">
+      <div class="section-header">
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <p class="section-description">
+          Una selección de mis trabajos más recientes en diseño e implementación
+        </p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <span class="project-tag">IA & UX</span>
+            <img src="./src/imagenes/chatbot.gif" alt="Chatbot UDEM" />
+          </div>
+          <div class="project-content">
+            <h3>Chatbot UDEM</h3>
+            <p>
+              Chatbot inteligente creado con Gemini AI que guía a aspirantes
+              universitarios a través del proceso de admisión en la Universidad
+              de Monterrey, ofreciendo respuestas personalizadas y experiencia
+              conversacional natural.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Gemini AI</span>
+              <span class="tech-tag">UX Design</span>
+              <span class="tech-tag">Conversational UI</span>
+            </div>
+            <a href="./udem-chatbot.html" class="project-link">
+              Ver proyecto
               <svg
-                xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -205,188 +963,220 @@
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-              Descargar CV
             </a>
           </div>
         </div>
-      </section>
 
-      <section id="habilidades" class="sub-section-alternative">
-        <h2 id="hHabilidadesTxt">Habilidades Técnicas</h2>
-        <div class="contenedor-habilidades">
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/copilot.png" alt="Copilot" />
-            <p>Microsoft Copilot Studio</p>
+        <div class="project-card">
+          <div class="project-image">
+            <span class="project-tag">Agente IA</span>
+            <img src="./src/imagenes/copilot.gif" alt="Copilot Studio" />
           </div>
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/php.svg" alt="PHP" />
-            <p>PHP</p>
-          </div>
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/azure.png" alt="Azure" />
-            <p>Azure</p>
-          </div>
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/sqlserver.png" alt="SQL Server" />
-            <p>SQL Server</p>
-          </div>
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/javascript.png" alt="JavaScript" />
-            <p>JavaScript</p>
-          </div>
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/bootstrap.png" alt="Bootstrap" />
-            <p>Bootstrap</p>
-          </div>
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/git.png" alt="Git" />
-            <p>Git</p>
-          </div>
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/api.webp" alt="APIs REST" />
-            <p>APIs REST</p>
-          </div>
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/html.png" alt="HTML" />
-            <p>HTML5</p>
-          </div>
-          <div class="tarjeta-habilidad">
-            <img src="./src/imagenes/css.png" alt="CSS" />
-            <p>CSS3</p>
+          <div class="project-content">
+            <h3>Agente IA Copilot Studio</h3>
+            <p>
+              Agente de inteligencia artificial desarrollado en Copilot Studio
+              con integración de Power Platform y Azure, diseñado para optimizar
+              la gestión y creación de tickets estudiantiles.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Copilot Studio</span>
+              <span class="tech-tag">Azure</span>
+              <span class="tech-tag">Power Platform</span>
+            </div>
+            <a href="./copilot.html" class="project-link">
+              Ver proyecto
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
         </div>
-      </section>
-    </div>
 
-    <section id="proyectos" class="sub-section-alternative">
-      <h2 id="hProyectos">Proyectos</h2>
-      <div class="contenedor-proyectos">
-        <div class="tarjeta-proyecto">
-          <a href="./udem-chatbot.html"
-            ><img src="./src/imagenes/chatbot.gif" alt="Gif de tienda en linea"
-          /></a>
-          <h3>Chatbot UDEM</h3>
-          <p style="margin: 10px">
-            Chatbot IA creado con Gemini. Atiende preguntas de aspirantes a
-            entrar a una carrera universitaria en la Universidad de Monterrey
-          </p>
-          <br />
-          <a class="ver-mas" href="./udem-chatbot.html">Ver mas/Demo -></a>
-        </div>
-        <div class="tarjeta-proyecto">
-          <a href="./copilot.html"
-            ><img src="./src/imagenes/copilot.gif" alt="Gif de copilot" />
-          </a>
-          <p style="margin: 10px">
-            Agente de Inteligencia Artificial creado en Copilot studio,
-            utilizando la Power Platform y Azure, este agente apoya en la
-            creacion de tickets generados por estudiantes.
-          </p>
-          <br />
-          <a class="ver-mas" href="./copilot.html">Ver mas/Demo -></a>
-        </div>
-        <div class="tarjeta-proyecto">
-          <a href="./trabajos.html"
-            ><img
-              src="./src/imagenes/trabajos.gif"
-              alt="Gif de tienda en linea"
-            />
-          </a>
-          <p style="margin: 10px">
-            Aplicacion web hecha para que las personas puedan encontrar su
-            vacante de trabajo ideal en Indeed en base a su personalidad
-          </p>
-          <br />
-          <a class="ver-mas" href="./trabajos.html">Ver mas/Demo -></a>
+        <div class="project-card">
+          <div class="project-image">
+            <span class="project-tag">Web App</span>
+            <img src="./src/imagenes/trabajos.gif" alt="Buscador de Trabajos" />
+          </div>
+          <div class="project-content">
+            <h3>Buscador de Trabajos por Personalidad</h3>
+            <p>
+              Aplicación web innovadora que conecta a los usuarios con vacantes
+              en Indeed basándose en su perfil de personalidad, creando matches
+              más significativos entre candidatos y oportunidades laborales.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">UX Research</span>
+              <span class="tech-tag">Indeed API</span>
+              <span class="tech-tag">Frontend</span>
+            </div>
+            <a href="./trabajos.html" class="project-link">
+              Ver proyecto
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="contenedor-proyectos">
-        <div class="tarjeta-proyecto">
-          <img
-            src="./src/imagenes/intermedia.gif"
-            alt="Gif de tienda en linea"
-          />
-          <a href="https://github.com/Jozona/Tienda-En-Linea-Web"
-            ><img
-              id="intermedia"
-              class="github"
-              src="https://gh-card.dev/repos/Jozona/Tienda-En-Linea-Web.svg"
-          /></a>
+
+      <!-- CV Section -->
+      <div class="cv-section">
+        <div class="cv-header">
+          <h3>Mi Currículum Vitae</h3>
+          <p style="color: var(--color-text-dim); margin-bottom: 1.5rem">
+            Descarga mi CV completo o visualízalo directamente aquí
+          </p>
         </div>
-        <div class="tarjeta-proyecto">
-          <img src="./src/imagenes/madAdmin.gif" alt="Gif de punto de venta" />
-          <a href="https://github.com/Jozona/Punto-de-venta"
-            ><img
-              id="mad"
-              class="github"
-              src="https://gh-card.dev/repos/Jozona/Punto-de-venta.svg"
-          /></a>
-        </div>
-        <div class="tarjeta-proyecto">
-          <img
-            src="./src/imagenes/prograweb1.gif"
-            alt="Gif pagina web de blogs"
-          />
-          <a href="https://github.com/Jozona/Tu-blog"
-            ><img
-              id="web"
-              class="github"
-              src="https://gh-card.dev/repos/Jozona/Tu-blog.svg"
-          /></a>
-        </div>
-        <div class="tarjeta-proyecto">
-          <img
-            style="max-height: 180px"
-            src="./src/imagenes/aavd.gif"
-            alt="Gif de aplicacion de escritorio para manejar consumo de energia"
-          />
-          <a href="https://github.com/Jozona/AAVD-2"
-            ><img
-              id="aavd"
-              class="github"
-              src="https://gh-card.dev/repos/Jozona/AAVD-2.svg"
-          /></a>
+        <iframe
+          src="./src/imagenes/Espinoza_Gutierrez_Josue_Emiliano.pdf"
+          class="cv-viewer"
+          title="Currículum Vitae de Josué Espinoza"
+        ></iframe>
+        <div style="text-align: center">
+          <a
+            href="./src/imagenes/Espinoza_Gutierrez_Josue_Emiliano.pdf"
+            download="CV_Josue_Espinoza_UIUX.pdf"
+            class="cv-download"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Descargar CV
+          </a>
         </div>
       </div>
     </section>
 
-    <footer id="contacto">
-      <h2 id="hContactar">Contáctame</h2>
-      <p>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="#ffffff"
-          width="24"
-          height="24"
-          viewBox="1 -4 24 24"
-        >
-          <path
-            d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"
-          />
-        </svg>
-        josue.espinoza.gtr@gmail.com
-      </p>
+    <!-- Contact Section -->
+    <section id="contacto" class="fade-in">
+      <div class="section-header">
+        <span class="section-label">Hablemos</span>
+        <h2 class="section-title">Contáctame</h2>
+        <p class="section-description">
+          ¿Tienes un proyecto en mente? Estoy disponible para colaboraciones y
+          oportunidades de diseño UI/UX
+        </p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-methods">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"
+                />
+              </svg>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">josue.espinoza.gtr@gmail.com</div>
+            </div>
+          </div>
 
-      <p>
-        <svg
-          fill="#ffffff"
-          width="24"
-          height="24"
-          xmlns="http://www.w3.org/2000/svg"
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-        >
-          <path
-            d="M16 22.621l-3.521-6.795c-.007.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.082-1.026-3.492-6.817-2.106 1.039c-1.639.855-2.313 2.666-2.289 4.916.075 6.948 6.809 18.071 12.309 18.045.541-.003 1.07-.113 1.58-.346.121-.055 2.102-1.029 2.11-1.033zm-2.5-13.621c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm9 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5zm-4.5 0c.828 0 1.5.672 1.5 1.5s-.672 1.5-1.5 1.5-1.5-.672-1.5-1.5.672-1.5 1.5-1.5z"
-          /></svg
-        >+52 (867)193-7816
-      </p>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M16 22.621l-3.521-6.795c-.007.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.082-1.026-3.492-6.817-2.106 1.039c-1.639.855-2.313 2.666-2.289 4.916.075 6.948 6.809 18.071 12.309 18.045.541-.003 1.07-.113 1.58-.346.121-.055 2.102-1.029 2.11-1.033z"
+                />
+              </svg>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">Teléfono</div>
+              <div class="contact-value">+52 (867) 193-7816</div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value">github.com/Jozona</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Josué Espinoza. Diseñado y desarrollado con pasión.</p>
     </footer>
 
-    <script src="./src/app.js"></script>
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const nav = document.getElementById("nav");
+        if (window.scrollY > 50) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
+        }
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>

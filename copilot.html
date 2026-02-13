@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -128,7 +128,9 @@
         padding-top: 5px;
         background: linear-gradient(135deg, #00bcf2 0%, #0078d4 100%);
         cursor: pointer;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
       .button:hover {
@@ -232,8 +234,9 @@
       .animacion h1::after {
         width: 0.125em;
         background: white;
-        animation: typewriter var(--typewriterSpeed)
-            steps(var(--typewriterCharacters)) 1s forwards,
+        animation:
+          typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters))
+            1s forwards,
           blink 750ms steps(var(--typewriterCharacters)) infinite;
       }
 
@@ -324,7 +327,9 @@
         border-radius: 15px;
         padding: 2rem;
         box-shadow: 0 2px 10px rgba(0, 120, 212, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
         border: 1px solid rgba(0, 120, 212, 0.1);
       }
 
@@ -582,7 +587,15 @@
             src="https://www.youtube.com/embed/aHO8qOWBVQrel=0"
             title="Demo del Asistente UDEM"
             frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
             allowfullscreen
             referrerpolicy="strict-origin-when-cross-origin"
             style="
@@ -621,7 +634,7 @@
       <div class="contenedor-experiencia">
         <div class="tarjeta-experiencia">
           <div class="experiencia-header">
-            <h3>Copiloto Administrativo Inteligente para la UDEM</h3>
+            <h3>Copiloto Administrativo Inteligente</h3>
             <div class="empresa">Microsoft Copilot Studio + ChatGPT 4.1</div>
           </div>
 

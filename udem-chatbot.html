@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Asistente Académico UDEM | Chatbot con IA</title>
+    <title>Chatbot Universitario | Caso de Estudio UI/UX</title>
     <meta
       name="description"
-      content="Chatbot inteligente para orientación académica en la Universidad de Monterrey. Desarrollado con Google Gemini 3.0 Flash y RAG en frontend."
+      content="Caso de estudio: diseño de chatbot inteligente con enfoque en experiencia de usuario, investigación UX y diseño de interfaces conversacionales."
     />
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
     <div class="elfsight-app-dc4a6d0e-6a07-4558-a18c-3fb1a2b9648f"></div>
@@ -230,8 +230,9 @@
       .animacion h1::after {
         width: 0.125em;
         background: black;
-        animation: typewriter var(--typewriterSpeed)
-            steps(var(--typewriterCharacters)) 1s forwards,
+        animation:
+          typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters))
+            1s forwards,
           blink 750ms steps(var(--typewriterCharacters)) infinite;
       }
 
@@ -322,7 +323,9 @@
         border-radius: 15px;
         padding: 2rem;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
       .tarjeta-caracteristica:hover {
@@ -449,8 +452,8 @@
         <ul>
           <li><a href="./index.html">Inicio</a></li>
           <li><a href="#demo">Video</a></li>
-          <li><a href="#descripcion">Descripción</a></li>
-          <li><a href="#caracteristicas">Características</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#metodologia">Metodología</a></li>
         </ul>
         <button class="hamburger" id="hamburger">
           <i class="fas fa-bars"></i>
@@ -459,20 +462,16 @@
 
       <div class="hero-area">
         <div class="hero-text animacion">
-          <h1>Asistente UDEM</h1>
+          <h1>Chatbot Universitario</h1>
           <div class="subtitle">
-            <p>Tu orientador académico con Inteligencia Artificial</p>
+            <p>Caso de Estudio UI/UX</p>
             <div class="button">
-              <a href="#demo"> Demo</a>
+              <a href="#demo">Ver Demo</a>
             </div>
           </div>
         </div>
         <div class="socials">
-          <a
-            href="https://github.com/tu-usuario/chatbot-udem"
-            class="social"
-            target="_blank"
-          >
+          <a href="https://github.com/Jozona" class="social" target="_blank">
             <i class="fab fa-github" style="font-size: 50px; color: white"></i>
           </a>
         </div>
@@ -484,7 +483,7 @@
       class="sub-section-alternative"
       style="background-color: #f9f9f9"
     >
-      <h2>Video Demostrativo</h2>
+      <h2>Demostración del Proyecto</h2>
       <div style="max-width: 1400px; margin: 40px auto; padding: 20px">
         <div
           style="
@@ -499,9 +498,17 @@
         >
           <iframe
             src="https://www.youtube.com/embed/TqL6pcsGOFg?rel=0"
-            title="Demo del Asistente UDEM"
+            title="Demo del Chatbot Universitario"
             frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
             allowfullscreen
             referrerpolicy="strict-origin-when-cross-origin"
             style="
@@ -534,51 +541,103 @@
       </div>
     </section>
 
-    <!-- DESCRIPCIÓN -->
-    <section id="descripcion" class="sub-section-alternative">
-      <h2>Sobre el Proyecto</h2>
+    <!-- DESCRIPCIÓN DEL PROYECTO -->
+    <section id="proceso" class="sub-section-alternative">
+      <h2>Resumen del Proyecto</h2>
       <div class="contenedor-experiencia">
         <div class="tarjeta-experiencia">
           <div class="experiencia-header">
-            <h3>Asistente Académico Inteligente para la UDEM</h3>
-            <div class="empresa">Proyecto con Google Gemini 3.0</div>
+            <h3>Chatbot de Orientación Académica</h3>
+            <div class="empresa">Diseño UI/UX & Desarrollo Frontend</div>
           </div>
 
           <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #444">
-            Un chatbot flotante que ayuda a estudiantes y aspirantes a explorar
-            carreras, requisitos, duración y perfil de ingreso en la Universidad
-            de Monterrey. Funciona 100% en el navegador, sin backend, y responde
-            en tiempo real con información oficial.
+            Diseñé e implementé un asistente virtual inteligente enfocado en
+            mejorar la experiencia de aspirantes universitarios. El proyecto
+            abarcó investigación de usuarios, arquitectura de información,
+            diseño de interfaces conversacionales y desarrollo frontend con
+            inteligencia artificial.
           </p>
 
           <div class="tecnologias-usadas">
-            <p><strong>Tecnologías utilizadas:</strong></p>
+            <p><strong>Herramientas y Metodologías:</strong></p>
             <p>
-              JavaScript (Vanilla) • Google Gemini 3.0 • HTML5 • CSS3 •
-              Retrieval-Augmented Generation • Font Awesome • Google Fonts
-              (Poppins)
+              Investigación UX • Personas & User Journey • Figma • Wireframing •
+              Prototipos Interactivos • Design Thinking • Arquitectura de
+              Información • Usability Testing • Google Gemini AI • JavaScript •
+              Diseño Conversacional
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CARACTERÍSTICAS PRINCIPALES -->
+    <!-- PROCESO DE DISEÑO UX -->
     <section
-      id="caracteristicas"
+      id="metodologia"
       class="sub-section-alternative"
       style="background-color: #f9f9f9"
     >
-      <h2>Características Principales</h2>
+      <h2>Proceso de Diseño UX</h2>
       <div class="contenedor-caracteristicas">
         <div class="tarjeta-caracteristica">
           <div class="icono-caracteristica">
-            <i class="fas fa-bolt"></i>
+            <i class="fas fa-users"></i>
           </div>
-          <h4>Respuestas Rápidas y Precisas</h4>
+          <h4>1. Investigación de Usuarios</h4>
           <p>
-            Implementación de Retrieval-Augmented Generation (RAG) en frontend
-            para proporcionar información exacta en tiempo real.
+            Realicé entrevistas con aspirantes universitarios para identificar
+            pain points en el proceso de selección de carreras. Creé personas y
+            mapas de empatía para comprender necesidades reales.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h4>2. Definición del Problema</h4>
+          <p>
+            Los usuarios necesitaban acceso rápido e intuitivo a información
+            académica sin navegar por múltiples páginas. Definí el scope y los
+            objetivos clave del chatbot basándome en insights de investigación.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-pencil-ruler"></i>
+          </div>
+          <h4>3. Ideación y Wireframing</h4>
+          <p>
+            Diseñé wireframes de baja fidelidad para explorar diferentes flujos
+            conversacionales. Creé la arquitectura de información y mapas de
+            conversación para garantizar respuestas coherentes.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h4>4. Diseño de UI</h4>
+          <p>
+            Desarrollé un sistema de diseño minimalista con componentes
+            reutilizables. Prioricé la legibilidad, accesibilidad (WCAG 2.1) y
+            una interfaz que se integra naturalmente sin interrumpir la
+            navegación del sitio.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-code"></i>
+          </div>
+          <h4>5. Prototipado e Implementación</h4>
+          <p>
+            Construí prototipos interactivos en Figma y los validé con usuarios.
+            Implementé el diseño final con HTML/CSS/JavaScript, asegurando
+            fidelidad al diseño y performance óptimo en todos los dispositivos.
           </p>
         </div>
 
@@ -586,10 +645,42 @@
           <div class="icono-caracteristica">
             <i class="fas fa-chart-line"></i>
           </div>
-          <h4>Consumo Mínimo de API</h4>
+          <h4>6. Testing e Iteración</h4>
           <p>
-            Procesa archivos de más de 16,000 líneas sin enviar todo el
-            contenido en cada consulta, optimizando costos y velocidad.
+            Realicé pruebas de usabilidad con usuarios reales, analizando
+            métricas como tasa de resolución, tiempo de respuesta y
+            satisfacción. Iteré el diseño basándome en feedback cuantitativo y
+            cualitativo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPIOS DE DISEÑO -->
+    <section class="sub-section-alternative">
+      <h2>Principios de Diseño Aplicados</h2>
+      <div class="contenedor-caracteristicas">
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h4>Diseño Conversacional</h4>
+          <p>
+            Creé un tono de voz amigable y profesional que refleja la identidad
+            de marca. Los diálogos fueron diseñados para ser naturales, concisos
+            y orientados a objetivos específicos del usuario.
+          </p>
+        </div>
+
+        <div class="tarjeta-caracteristica">
+          <div class="icono-caracteristica">
+            <i class="fas fa-universal-access"></i>
+          </div>
+          <h4>Accesibilidad Primero</h4>
+          <p>
+            Implementé contraste de color WCAG AA, soporte para lectores de
+            pantalla, navegación por teclado y tamaños de fuente escalables para
+            garantizar que todos los usuarios puedan interactuar con el chatbot.
           </p>
         </div>
 
@@ -597,52 +688,61 @@
           <div class="icono-caracteristica">
             <i class="fas fa-mobile-alt"></i>
           </div>
-          <h4>Interfaz Moderna y Responsive</h4>
+          <h4>Mobile-First Design</h4>
           <p>
-            Botón flotante, ventana animada y diseño optimizado para móvil y
-            escritorio que garantiza la mejor experiencia en cualquier
-            dispositivo.
+            Diseñé primero para dispositivos móviles, considerando que la
+            mayoría de usuarios accederían desde smartphones. El chatbot se
+            adapta perfectamente a cualquier tamaño de pantalla manteniendo
+            usabilidad óptima.
           </p>
         </div>
 
         <div class="tarjeta-caracteristica">
           <div class="icono-caracteristica">
-            <i class="fas fa-magic"></i>
+            <i class="fas fa-sync-alt"></i>
           </div>
-          <h4>Experiencia de Usuario Fluida</h4>
+          <h4>Feedback Instantáneo</h4>
           <p>
-            Indicador de "escribiendo...", manejo inteligente de errores y
-            scroll automático para una interacción natural.
+            Incorporé indicadores visuales como "escribiendo...", animaciones de
+            carga y confirmaciones visuales para mantener al usuario informado
+            del estado del sistema en todo momento.
           </p>
         </div>
 
         <div class="tarjeta-caracteristica">
           <div class="icono-caracteristica">
-            <i class="fas fa-server"></i>
+            <i class="fas fa-brain"></i>
           </div>
-          <h4>Totalmente Autónomo</h4>
+          <h4>Recuperación de Errores</h4>
           <p>
-            No requiere servidor backend, ideal para integración rápida en
-            cualquier sitio web estático o dinámico.
+            Diseñé mensajes de error claros y constructivos que guían al usuario
+            hacia una solución. El chatbot sugiere alternativas cuando no
+            entiende una consulta, mejorando la experiencia general.
           </p>
         </div>
 
         <div class="tarjeta-caracteristica">
           <div class="icono-caracteristica">
-            <i class="fas fa-shield-alt"></i>
+            <i class="fas fa-sliders-h"></i>
           </div>
-          <h4>Privacidad y Seguridad</h4>
+          <h4>Personalización Contextual</h4>
           <p>
-            Toda la lógica se ejecuta en el cliente, sin exposición innecesaria
-            de datos sensibles del usuario.
+            Implementé un sistema RAG (Retrieval-Augmented Generation) que
+            proporciona respuestas personalizadas según el contexto de la
+            conversación, creando una experiencia más relevante para cada
+            usuario.
           </p>
         </div>
       </div>
     </section>
 
     <!-- GALERÍA DE CAPTURAS -->
-    <section id="capturas" class="sub-section-alternative">
-      <h2>Capturas del Chatbot</h2>
+    <section
+      id="capturas"
+      class="sub-section-alternative"
+      style="background-color: #f9f9f9"
+    >
+      <h2>Diseño Visual del Chatbot</h2>
       <div class="contenedor-proyectos">
         <div class="tarjeta-proyecto">
           <img
@@ -664,8 +764,6 @@
         </div>
       </div>
     </section>
-
-    <!-- VIDEO DEMO -->
 
     <!-- FOOTER -->
     <footer id="contacto">
