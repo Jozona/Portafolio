@@ -181,6 +181,7 @@
         text-transform: uppercase;
         margin-bottom: 2rem;
         animation: fadeInUp 1s ease 0.2s backwards;
+        margin-top: 3rem;
       }
 
       .hero h1 {
@@ -728,6 +729,32 @@
         opacity: 1;
         transform: translateY(0);
       }
+
+      .live-tag {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .live-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #ff4444;
+        border-radius: 50%;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 6px rgba(255, 68, 68, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
+        }
+      }
     </style>
   </head>
 
@@ -749,7 +776,7 @@
     <!-- Hero Section -->
     <section class="hero" id="inicio">
       <div class="hero-content">
-        <span class="hero-label">Diseñador UI/UX</span>
+        <span class="hero-label">Diseñador web</span>
         <h1>Josué Espinoza</h1>
         <p class="hero-subtitle">
           Creando experiencias digitales que conectan con las personas
@@ -972,22 +999,37 @@
 
         <div class="project-card">
           <div class="project-image">
-            <span class="project-tag">Agente IA</span>
-            <img src="./src/imagenes/copilot.gif" alt="Copilot Studio" />
+            <span class="project-tag">React</span>
+            <span class="project-tag live-tag">
+              <span class="live-dot"></span>
+              Hosteado
+            </span>
+            <video
+              src="./src/imagenes/react.mp4"
+              autoplay
+              loop
+              muted
+              playsinline
+              style="width: 100%; height: 100%; object-fit: cover"
+            ></video>
           </div>
           <div class="project-content">
-            <h3>Agente IA Copilot Studio</h3>
+            <h3>React + Tailwind CSS</h3>
             <p>
-              Agente de inteligencia artificial desarrollado en Copilot Studio
-              con integración de Power Platform y Azure, diseñado para optimizar
-              la gestión y creación de tickets estudiantiles.
+              Página interactiva desarrollada con React, Vite y Tailwind CSS,
+              enfocada en la exploración de animaciones y efectos visuales
+              modernos. Incluye diseño responsive adaptado a distintos
+              dispositivos.
             </p>
             <div class="project-tech">
-              <span class="tech-tag">Copilot Studio</span>
-              <span class="tech-tag">Azure</span>
-              <span class="tech-tag">Power Platform</span>
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Vite</span>
+              <span class="tech-tag">Tailwind CSS</span>
             </div>
-            <a href="./copilot.html" class="project-link">
+            <a
+              href="https://jozona.github.io/react-design"
+              class="project-link"
+            >
               Ver proyecto
               <svg
                 width="16"
@@ -1021,6 +1063,39 @@
               <span class="tech-tag">Frontend</span>
             </div>
             <a href="./trabajos.html" class="project-link">
+              Ver proyecto
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <span class="project-tag">Agente IA</span>
+            <img src="./src/imagenes/copilot.gif" alt="Copilot Studio" />
+          </div>
+          <div class="project-content">
+            <h3>Agente IA Copilot Studio</h3>
+            <p>
+              Agente de inteligencia artificial desarrollado en Copilot Studio
+              con integración de Power Platform y Azure, diseñado para optimizar
+              la gestión y creación de tickets estudiantiles.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Copilot Studio</span>
+              <span class="tech-tag">Azure</span>
+              <span class="tech-tag">Power Platform</span>
+            </div>
+            <a href="./copilot.html" class="project-link">
               Ver proyecto
               <svg
                 width="16"
